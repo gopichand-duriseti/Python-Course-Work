@@ -5,7 +5,7 @@ s=set(map(int,input("enter the photo number: ").split(',')))
 
 for i in s:
     print(g[i])
-
+print()
 
 #GRADING
 data={1:{'name':'Dinesh','exam_status':True,'python':100,'sql':95,'html':98},
@@ -35,6 +35,7 @@ if studid in data:
         print(f'{data[studid]["name"]} is not attempted the exams')
 else:
     print("The id is not present.Try Again!")
+print()
 
 #ROCK-PAPER-SCISSOR
 import random
