@@ -1,4 +1,4 @@
-######################IRCTCTRAIN######################
+###################### IRCTC TRAIN ######################
 import random
 Book_Tickets=input("Enter the ticket: ")
 Cancel_Ticket=input("Enter the ticket to be cancelled: ")  
