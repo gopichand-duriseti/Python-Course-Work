@@ -36,3 +36,42 @@ if studid in data:
 else:
     print("The id is not present.Try Again!")
 
+#ROCK-PAPER-SCISSOR
+import random
+print('1.Rock\n2.Paper\n3.Scissor')
+
+while True:
+    ch=int(input("Enter your choice: "))
+    if ch==0:
+        print("Game Over")
+        break
+    elif ch==1:
+        com=random.randint(1,3)
+        print("computer choice:",com)
+        if com==1:
+            print("Tie both choose the Rock")
+        elif com==2:
+            print("Computer Wins")
+        elif com==3:
+            print("You Win")
+    elif ch==2:
+        com=random.randint(1,3)
+        print("computer choice:",com)
+        if com==1:
+            print("You Win")
+        elif com==2:
+            print("Tie both choose the Paper")
+        elif com==3:
+            print("Computer Wins")
+    elif ch==3:
+        com=random.randint(1,3)
+        print("computer choice:",com)
+        if com==1:
+            print("Computer Wins")
+        elif com==2:
+            print("You Win")
+        elif com==3:
+            print("Tie both choose the Scissor")
+    
+    else:
+        print("Invalid Choice")
