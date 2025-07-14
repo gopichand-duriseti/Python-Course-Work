@@ -15,8 +15,7 @@ print(f"The booked tickets are {Book_Tickets}")
 
 #Printing the tickets that are cancelled
 print(f"The cancelled tickets are {Cancel_Ticket}")
-
-#Knowing the details of your PNR Number
+#Getting the details of your PNR Number
 print("Your {} PNR Number number details are: ".format(PNR_Enquiry))
 
 #To see/observe the frequently asked questions
