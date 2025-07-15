@@ -193,7 +193,7 @@ for row in range(m):
 n=int(input("Enter rows for N pattern: "))
 for row in range(n):
     for col in range(n):
-        if col==0 or col==m-1 or row==col:
+        if col==0 or col==n-1 or row==col:
             print("*",end=' ')
         else:
             print(" ",end=" ")
