@@ -6,3 +6,13 @@ for row in range(5):
     for column in range(5):
         print(f"*",end=" ")
     print()
+
+for row in range(5):
+    for column in range(5):
+        print(row,end=" ")
+    print()
+
+for row in range(5):
+    for column in range(5):
+        print(column,end=" ")
+    print()
