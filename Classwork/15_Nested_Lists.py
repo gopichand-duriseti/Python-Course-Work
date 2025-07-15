@@ -2,7 +2,7 @@
 
 #OUTER LOOP means 'rows' and INNER LOOP means 'columns'
 
-for i in range(5):
-    for j in range(5):
-        print("*",end=" ")
+for row in range(5):
+    for column in range(5):
+        print(f"*",end=" ")
     print()
