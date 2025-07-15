@@ -57,12 +57,45 @@ for row in range(u):
         else:
             print(" ",end=" ")
     print()   
-v=int(input("Enter rows for V pattern: "))
+v = int(input("Enter rows for V pattern: "))
 for row in range(v):
-    for col in range(v):
-        if (col in (0,v-1) and row<=v//2):
+    for col in range(v * 2 - 1):  # to make symmetric V
+        if col == row or col == (2 * v - 2 - row):
+            print("*", end=" ")
+        else:
+            print(" ", end=" ")
+    print()
+w=int(input("Enter rows for W pattern: "))
+for row in range(w):
+    for col in range(w):
+        if col==0 or col==w-1 or (row+col==w-1 and row > w//2) or (row==col and row > w//2) or (row==col==w//2):
         #row==u-1 or col==0 or col==u-1:
             print("*",end=' ')
         else:
             print(" ",end=" ")
-    print()  
+    print()
+x=int(input("Enter rows for X pattern: "))
+for row in range(x):
+    for col in range(x):
+        if row+col==x-1 or row==col:
+            print('*',end=' ')
+        else:
+            print(' ',end=' ')
+    print()
+y=int(input("Enter rows for Y pattern: "))
+for row in range(y):
+    for col in range(y):
+        if (col==y//2 and row in range(y//2,y)) or (row+col==y-1 and row in range(0,y//2)) or (row==col and row in range(0,y//2)):
+            print("*",end=" ")
+        else:
+            print(" ",end=" ")
+    print()
+
+z=int(input("Enter rows for Z pattern: "))
+for row in range(z):
+    for col in range(z):
+        if row==0 or row==z-1 or row+col==z-1:
+            print("*",end=" ")
+        else:
+            print(" ",end=" ")
+    print()

@@ -59,24 +59,6 @@ for row in range(Eg):
             print(' ',end=' ')
     print()
 
-z=int(input("Enter rows for Z pattern: "))
-for row in range(z):
-    for col in range(z):
-        if row==0 or row==z-1 or row+col==z-1:
-            print("*",end=" ")
-        else:
-            print(" ",end=" ")
-    print()
-
-x=int(input("Enter rows for X pattern: "))
-for row in range(x):
-    for col in range(x):
-        if row+col==x-1 or row==col:
-            print('*',end=' ')
-        else:
-            print(' ',end=' ')
-    print()
-
 a=int(input("Enter rows for A pattern: "))
 for row in range(a):
     for col in range(a):
