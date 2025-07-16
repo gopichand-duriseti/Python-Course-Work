@@ -62,7 +62,8 @@ for row in range(Eg):
 a=int(input("Enter rows for A pattern: "))
 for row in range(a):
     for col in range(a):
-        if row==0 or row==a//2 or col==0 or col==a-1:
+        if row==a//2 or (row==0 and col==a//2) or (col==0 and row in range(a//2+1,a)) or (col==a-1 and row in range(a//2+1,a)) or ((col==1 or col==a-2) and row==a//2-1) or (row+col==a//2 and row in range(1,a//2)) or (col==(a//2+row) and row in range(1,a//2)):
+        #row==a//2 or (col==a//2 and row==0) or (row+col==a-1 and row in range(1,a//2)) or (row==col and row in range(1,a//2)) or (col==0 and row in range(a//2+1,a)) or (col==a-1 and row in range(a//2+1,a)):
             print("*",end=' ')
         else:
             print(" ",end=" ")
