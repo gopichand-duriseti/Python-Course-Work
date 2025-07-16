@@ -27,7 +27,7 @@ for row in range(q):
 r=int(input("Enter rows for R pattern: "))
 for row in range(r):
     for col in range(r):
-        if col==0 or row==0 or (row+col==r-1 and row in range(0,r//2)) or (row==col and row >r//2) or (col in range(1,r//2+1) and row==r//2):
+        if col==0 or row==0 or (row+col==r-1 and row in range(0,r//2)) or (row==col and row in range(r//2+1,r)) or (col in range(1,r//2+1) and row==r//2):
             print("*",end=' ')
         else:
             print(" ",end=" ")
