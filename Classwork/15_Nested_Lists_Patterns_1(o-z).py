@@ -52,7 +52,7 @@ u=int(input("Enter rows for U pattern: "))
 for row in range(u):
     for col in range(u):
         if (col==0 and row!=u-1) or (col==u-1 and row!=u-1) or (col in range(1,u-1) and row==u-1):
-        #row==u-1 or col==0 or col==u-1:
+        #row==u-1 or col==0 or col==u-1::
             print("*",end=' ')
         else:
             print(" ",end=" ")
