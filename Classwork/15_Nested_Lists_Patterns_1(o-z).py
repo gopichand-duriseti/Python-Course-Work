@@ -35,7 +35,7 @@ for row in range(r):
 s=int(input("Enter rows for S pattern: "))
 for row in range(s):
     for col in range(s):
-        if row==0 or row==s-1 or row==s//2 or (row in range(1,q//2) and col==0) or (row in range(q//2+1,q-1) and col==s-1):
+        if row==0 or row==s-1 or row==s//2 or (row in range(1,s//2) and col==0) or (row in range(s//2+1,s-1) and col==s-1):
             print("*",end=' ')
         else:
             print(" ",end=" ")
