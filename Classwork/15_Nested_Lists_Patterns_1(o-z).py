@@ -10,7 +10,7 @@ for row in range(o):
 p=int(input("Enter rows for P pattern: "))
 for row in range(p):
     for col in range(p):
-        if col==0 or (col in range(1,p) and (row == 0 or row==p//2)) or (row in range(1,p//2) and col==o-1) :
+        if col==0 or (col <p and (row == 0 or row==p//2)) or (row <p//2 and col==o-1) :
             print("*",end=' ')
         else:
             print(" ",end=" ")
@@ -35,7 +35,7 @@ for row in range(r):
 s=int(input("Enter rows for S pattern: "))
 for row in range(s):
     for col in range(s):
-        if row==0 or row==s-1 or row==s//2 or (row in range(1,s//2) and col==0) or (row in range(s//2+1,s-1) and col==s-1):
+        if row==0 or row==s-1 or row==s//2 or (row <s//2 and col==0) or (row >=s//2+1 and col==s-1):
             print("*",end=' ')
         else:
             print(" ",end=" ")

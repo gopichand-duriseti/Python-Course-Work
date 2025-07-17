@@ -62,7 +62,7 @@ for row in range(Eg):
 a=int(input("Enter rows for A pattern: "))
 for row in range(a):
     for col in range(a):
-        if row==a//2 or (row==0 and col==a//2) or (col==0 and row in range(a//2+1,a)) or (col==a-1 and row in range(a//2+1,a)) or ((col==1 or col==a-2) and row==a//2-1) or (row+col==a//2 and row in range(1,a//2)) or (col==(a//2+row) and row in range(1,a//2)):
+        if row==a//2 or (row==0 and col==a//2) or (col==0 and row in range(a//2+1,a)) or (col==a-1 and row in range(a//2+1,a)) or ((col==1 or col==a-2) and row==a//2-1) or (row+col==a//2 and 1<=row<a//2) or (col==(a//2+row) and 1<=row<a//2):
         #row==a//2 or (col==a//2 and row==0) or (row+col==a-1 and row in range(1,a//2)) or (row==col and row in range(1,a//2)) or (col==0 and row in range(a//2+1,a)) or (col==a-1 and row in range(a//2+1,a)):
             print("*",end=' ')
         else:
@@ -71,7 +71,7 @@ for row in range(a):
 b=int(input("Enter rows for B pattern: "))
 for row in range(b):
     for col in range(b):
-        if row==0 or row==b//2 or row==b-1 or col==0 or col==b-1:
+        if (row==0 and col!=b-1) or row==b//2 or (row==b-1 and col!=b-1) or col==0 or col==b-1 and row not in (0,b-1):
             print("*",end=' ')
         else:
             print(" ",end=" ")
@@ -120,7 +120,7 @@ for row in range(g):
 o_g=int(input("Enter rows for other G pattern: "))
 for row in range(o_g):
     for col in range(o_g):
-        if row==0 or col==0 or row==o_g-1 or (col in range(o_g//2,o_g) and row == o_g//2) or (row in range(o_g//2+1,o_g-1) and col==o_g-1):
+        if row==0 or col==0 or row==o_g-1 or (col in range(o_g//2,o_g) and row == o_g//2) or (row >=o_g//2+1 and col==o_g-1):
             print("*",end=' ')
         else:
             print(" ",end=" ")
@@ -144,7 +144,7 @@ for row in range(i):
 j=int(input("Enter rows for J pattern: "))
 for row in range(j):
     for col in range(j):
-        if row==0 or col==j//2 or (row in range(j//2+1,j-1) and col ==0) or (row==j-1 and col in range(0,j//2)):
+        if row==0 or col==j//2 or (row in range(j//2+1,j-1) and col ==0) or (row==j-1 and col <j//2):
             print("*",end=' ')
         else:
             print(" ",end=" ")
@@ -168,7 +168,7 @@ for row in range(l):
 m=int(input("Enter rows for M pattern: "))
 for row in range(m):
     for col in range(m):
-        if col==0 or col==m-1 or (row in range(1,m//2+1) and row==col) or (row==col==m//2) or (row+col==k-1 and row < k//2):
+        if col==0 or col==m-1 or (row <m//2+1 and row==col) or (row==col==m//2) or (row+col==k-1 and row < k//2):
             print("*",end=' ')
         else:
             print(" ",end=" ")
