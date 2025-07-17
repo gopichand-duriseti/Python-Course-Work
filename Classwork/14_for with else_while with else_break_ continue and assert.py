@@ -33,8 +33,7 @@ print("Proceed order")'''
 
 #Check balance,withdraw,deposit,view transactions
 d={}
-cred={'gopi':{'pin':1234,'cur_bal':10000},'hari':{'pin':1234,'cur_bal':20000},'arjun':{'pin':1234,'cur_bal':30000}}
-transactions=[]
+cred={'gopi':{'pin':1234,'cur_bal':10000,'history':[]},'hari':{'pin':1234,'cur_bal':20000,'history':[]},'arjun':{'pin':1234,'cur_bal':30000},'history':[]}
 acname=input("Enter acnt holder name: ")
 balance=cred[acname]['cur_bal']
 pin=int(input("Enter pin no: "))
@@ -70,7 +69,7 @@ if cred[acname]['pin']==pin:
                   s.append(f'Deposit Amount:{Deposit_amount}')
               elif ch==4:
                   for i in s:
-                    transactions.append(i)
+                    cred[acname]['history'].append(i)
                     print(i)
               else:
                   print('Invalid Choice')
@@ -79,4 +78,3 @@ else:
     print('Invalid login')
 
 print(cred)
-print(transactions)
