@@ -182,7 +182,7 @@ def Remove_duplicate_messages():
         print(f'Unique messages count:{len(s)}')
         print(f'Duplicate messages:{x}')
     else:
-        print(f'Unique messages count:{l}')
+        print(f'Unique messages count:{len(d1)}')
         print(f'No Duplicates Found')
     print()
 def Sort_msgs():
