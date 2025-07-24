@@ -11,3 +11,12 @@ print(evens)
 names = ["alice", "bob", "charlie"]
 upper_names = [name.upper() for name in names]
 print(upper_names)
+
+
+data=['pen','Book']
+dic1={i+1:data[i] for i in range(len(data))}
+print(dic1)
+
+
+t=tuple(i for i in range(1,10))
+print(t)
