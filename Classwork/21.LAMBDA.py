@@ -31,8 +31,8 @@ notzero=list(filter(lambda x:x!=0,l))
 print(notzero)
 
 data={'gopi':False,'Mukesh':True,'Rahul':True}
-d=list(filter(lambda i:data[i],data))
-print(d)
+d=list(filter(lambda i:data[i],data)) 
+print(d) #{'Mukesh','Rahul'}
 '''---------------------------------------------------------------------------------------------'''
 from functools import reduce
 
