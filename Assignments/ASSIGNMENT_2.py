@@ -113,7 +113,6 @@ def Message_count_user():
 def Most_frequent_word_user():
     from collections import Counter
     import string
-    u1=''
     msg_f=input("Enter user name: ")
     punct_to_remove = string.punctuation.replace("'", "")
     for i,j in d.items():
@@ -179,7 +178,7 @@ def Remove_duplicate_messages():
             if i not in x:
                 x.append(f'{i}')
     if len(set(d1))!=len(d1):
-        print(f'Unique messages count:{len(s)}')
+        print(f'Unique messages count:{len(set(d1))}')
         print(f'Duplicate messages:{x}')
     else:
         print(f'Unique messages count:{len(d1)}')
