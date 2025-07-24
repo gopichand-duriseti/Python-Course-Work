@@ -123,11 +123,12 @@ def Most_frequent_word_user():
                 u1=u.translate(str.maketrans('', '', punct_to_remove))
             else:
                 u1=j[0].translate(str.maketrans('', '', punct_to_remove))
-        else:
-            print("Enter Valid User")
-    r=Counter(u1.split())
-    v=sorted(r, key=r.get,reverse=True)[0]
-    print(f'The most frequently used word by {msg_f} is "{v}"')
+    else:
+        print("Enter Valid User")
+    if u1:
+        r=Counter(u1.split())
+        v=sorted(r, key=r.get,reverse=True)[0]
+        print(f'The most frequently used word by {msg_f} is "{v}"')
     print()
 def First_Last_msg_user():
     f_l_m=input("Enter user: ")
@@ -135,8 +136,6 @@ def First_Last_msg_user():
         if i == f_l_m:
             print(f'The first message sent by {f_l_m}: {d[i][0]}')
             print(f'The last message sent by {f_l_m}: {d[i][-1]}')
-        else:
-            print('Enter Valid User')
     print()
 def User_status():
     c_k=input("Enter user to check: ")
