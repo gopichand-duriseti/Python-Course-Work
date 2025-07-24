@@ -18,3 +18,10 @@ print(dic1)
 
 t=tuple(i for i in range(1,10))
 print(t)
+
+p=[i+j for i in range(5) for j in range(5)]
+print(p)
+
+vow='aeiou'
+k={i:0 for i in vow} #creating dict with a default value('0')
+print(k)
