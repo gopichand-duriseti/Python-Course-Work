@@ -9,19 +9,6 @@
     'I struggled with that one too.',
     'I can help both of you after lunch.',
     'Thanks, that would be awesome!'
-'''
-
-'''
-nm=int(input("Enter the number of messages: "))
-for i in range(nm):
-    name,message=input().split(':')
-    if name not in list(d.keys()):
-        d[name]=[message] #or [(i,message)]
-        d1.append(message)
-    else:
-        d[name].append(message) #or d[name].append((i,message))
-        d1.append(message)
-'''
 
 d = {
     'Alice': [
@@ -52,6 +39,28 @@ d1= [
     'I struggled with that one too.',
     'I can help both of you after lunch.',
     'Thanks, that would be awesome!']
+'''
+
+'''
+Alice: Good morning!
+Bob: Morning Alice!
+Charlie: Morning everyone!
+Alice: Hope you all have a great day.
+Bob: You too, Alice!
+Charlie: Let's plan something fun this weekend.
+'''
+d={}
+d1=[]
+nm=int(input("Enter the number of messages: "))
+for i in range(nm):
+    name,message=input().split(':')
+    if name not in list(d.keys()):
+        d[name]=[message] #or [(i,message)]
+        d1.append(message)
+    else:
+        d[name].append(message) #or d[name].append((i,message))
+        d1.append(message)
+
 k=list(d.keys())
 def Total_messages():
     print(f'The total number of messages: {len(d1)}')
@@ -104,6 +113,7 @@ def Message_count_user():
 def Most_frequent_word_user():
     from collections import Counter
     import string
+    u1=''
     msg_f=input("Enter user name: ")
     punct_to_remove = string.punctuation.replace("'", "")
     for i,j in d.items():
@@ -113,6 +123,8 @@ def Most_frequent_word_user():
                 u1=u.translate(str.maketrans('', '', punct_to_remove))
             else:
                 u1=j[0].translate(str.maketrans('', '', punct_to_remove))
+        else:
+            print("Enter Valid User")
     r=Counter(u1.split())
     v=sorted(r, key=r.get,reverse=True)[0]
     print(f'The most frequently used word by {msg_f} is "{v}"')
@@ -123,6 +135,8 @@ def First_Last_msg_user():
         if i == f_l_m:
             print(f'The first message sent by {f_l_m}: {d[i][0]}')
             print(f'The last message sent by {f_l_m}: {d[i][-1]}')
+        else:
+            print('Enter Valid User')
     print()
 def User_status():
     c_k=input("Enter user to check: ")
