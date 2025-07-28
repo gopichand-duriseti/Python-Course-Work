@@ -94,7 +94,7 @@ opt()
 def songs(son):
     for i in son:
         yield i
-son=['Saiyaara','Anna Antene','Sapphire','Poratame','Naatu Naatu','Peelings']
+son=['Saiyaara','Anna Antene','Sapphire','Poraatame','Naatu Naatu','Peelings']
 load1=songs(son)
 def option():
     current_m=None
