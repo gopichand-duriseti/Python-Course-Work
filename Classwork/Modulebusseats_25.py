@@ -12,4 +12,3 @@ seats={'U1':{'booking_status':True,'gender':'M','price':1220,'seat_type':'sleepe
        'L5':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
        'L10':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None}
 }
-
