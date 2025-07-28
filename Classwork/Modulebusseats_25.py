@@ -1,0 +1,15 @@
+seats={'U1':{'booking_status':True,'gender':'M','price':1220,'seat_type':'sleeper','name':'Dinesh','age':21},
+       'U2':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'U3':{'booking_status':True,'gender':'M','price':1220,'seat_type':'sleeper','name':'Rushi','age':56},
+       'U4':{'booking_status':True,'gender':'F','price':1220,'seat_type':'sleeper','name':'Smitha','age':70},
+       'U5':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'U6':{'booking_status':True,'gender':'M','price':1220,'seat_type':'sleeper','name':'Sanjay','age':5},
+       'U7':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'U8':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'U9':{'booking_status':True,'gender':'F','price':1220,'seat_type':'sleeper','name':'Sravani','age':23},
+       'U10':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'L1':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'L5':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None},
+       'L10':{'booking_status':None,'gender':None,'price':1220,'seat_type':'sleeper','name':None,'age':None}
+}
+
