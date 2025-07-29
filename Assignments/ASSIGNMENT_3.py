@@ -157,5 +157,3 @@ elif 0<count<7:
     print('👍 Good try! Concentrate more!')
 else:
     print('👎 Attend and listen classes Consistently,Practice hard!')
-    
-
