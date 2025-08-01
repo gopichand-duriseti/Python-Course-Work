@@ -34,6 +34,17 @@ for i in n:
     d[i]+=1 #d['1']+=1 :- {'1':1} Normally it gives error if not used defaultdict
 print(d) #no need of using if else to form the key:value pairs if using defaultdict
 
+from itertools import combinations,permutations
+from collections import deque
+
+l=[3,4,5,1,2]
+res=list(combinations([1,2,3,4,5],3))
+print(res)
+for i in range(len(l)-1):
+    for j in range(i+1,len(l)): 
+        print(l[i],l[j]) #0,1 #0,2 #0,3 #0,4 #1,2 #1,3 #1,4 #2,3 #2,4 #3,4
+
+'''
 #SNAKE AND LADDER
 Sanjay_score=0
 Sumanth_score=0
@@ -77,3 +88,4 @@ elif Sanjay_score<Sumanth_score:
     print('Sumanth Wins')
 else:
     print("It's a tie")
+    '''
