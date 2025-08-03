@@ -140,13 +140,13 @@ d) Curly braces''')
     else:
         print('❌ Wrong! The correct answer is "c"')
         return False
-l=[]
+'''l=[]
 for i in range(1,n+1):
-    l.append(f'Q{i}()')
-    
+    l.append(f'Q{i}()')'''
+
 count=0
-for i in l:
-    s=eval(i)
+for i in range(1,n+1):
+    s=eval(f'Q{i}()')
     if s:
         count+=1
 print()
