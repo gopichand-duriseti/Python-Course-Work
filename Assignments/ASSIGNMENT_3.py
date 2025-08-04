@@ -153,7 +153,7 @@ print()
 print(f'🎯 Your Final Score: {count}/10')
 if count>=7:
     print("🎉 Great job!! Keep practicing!")
-elif 0<count<7:
+elif 3<count<7:
     print('👍 Good try! Concentrate more!')
 else:
     print('👎 Attend and listen classes Consistently,Practice hard!')
