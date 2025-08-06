@@ -29,4 +29,6 @@ emoji('😁',6):-
 emoji('😊',3):-
 😊
 😊😊
+Explaination:
+Here, We used emoji,rows lenght as input() inside function and with the help of for loop iteration done accordingly to print emoji triangle
 ''')
