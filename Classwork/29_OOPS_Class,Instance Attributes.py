@@ -77,7 +77,7 @@ class shopping:
     def update(cls,new_discount):
         cls.discount=new_discount
         print(f'{new_discount} is updated')
-    def product(self,price,name):
+    def product(self,price,name): #Even if you use anything in place of self we will get the output
         self.price=price
         self.name=name
         return self.price,self.name
