@@ -7,16 +7,40 @@ class Details:
         self.name=name
         self._mail=mail
         self.__pwd=pwd
-    def getpassword(self):
+    def getpassword(self): #getter method
         return self.__pwd
-    def setpassword(self,newpwd):
+    def setpassword(self,newpwd):#setter method
         self.__pwd=newpwd
         return self.__pwd
 mukesh=Details("Mukesh Babu","mukesh@gmail.com","mukesh@68")
-print(mukesh.name)
+print(mukesh.name)  #PUBLIC VARIABLE
 print(mukesh._mail) #If mukesh.mail:-#AttributeError: 'Details' object has no attribute 'mail'[PROTECTED VARIABLE]
-print(mukesh.__pwd) #You can't access even after giving __pwd #AttributeError: 'Details' object has no attribute '__pwd'[PRIVATE VARIABLE]
-
+'''print(mukesh.__pwd) #You can't access even after giving __pwd #AttributeError: 'Details' object has no attribute '__pwd'[PRIVATE VARIABLE]
+'''
 #ONLY INSIDE YOU CAN ACCESS PWD
 print(mukesh.getpassword())
 print(mukesh.setpassword("MukeshBabu@70"))
+
+class Bank:
+    def __init__(self):
+        self.name='xyz'
+        self._balance=0
+    @property
+    def noresbalance(self):
+        return self._balance
+    @noresbalance.setter
+    def noresbalance(self,amount):
+        self._balance+=amount
+
+b=Bank()
+print(b.noresbalance)
+b.noresbalance=3000
+print(b.noresbalance) #3000
+b.noresbalance=5000
+print(b.noresbalance) #8000
+
+print(b.name)
+b.name='abc'
+print(b.name)
+
+
