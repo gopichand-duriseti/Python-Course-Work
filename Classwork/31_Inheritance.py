@@ -86,6 +86,9 @@ class StatusV4(StatusV3):
         self.video=video
         print(f'{self.video} is uploaded to your status')
 
+#ABOVE EXAMPLE CAN ALSO BE CALLED AS HYBRID INHERITANCE #It is a combination of two or more types of inheritance
+#STATUS TO STATUSV1(SINGLE),STATUSV3(MULTIPLE),STATUSV3 TO STATUSV4(MULTILEVEL)
+
 gopi=Status()
 gopi.uploadImage('selfie.png')
 
@@ -109,5 +112,3 @@ manish.addCaption('Silence')
 manish.like()
 manish.addmusic('oohh manishi.mp3')
 manish.videolength('Kalahasthi gadha.mp4')
-#ABOVE EXAMPLE CAN ALSO BE CALLED AS HYBRID INHERITANCE #It is a combination of two or more types of inheritance
-#STATUS TO STATUSV1(SINGLE),STATUSV3(MULTIPLE),STATUSV3 TO STATUSV4(MULTILEVEL)
