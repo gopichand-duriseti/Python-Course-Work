@@ -19,7 +19,7 @@ def emoji():
     print('''def emoji(emoji,n):
     for i in range(1,n):
         print(emoji*i)
-#TestCases
+TestCases
 emoji('😁',6):-
 😁
 😁😁      
@@ -31,4 +31,20 @@ emoji('😊',3):-
 😊😊
 Explaination:
 Here, We used emoji,rows lenght as input() inside function and with the help of for loop iteration done accordingly to print emoji triangle
+''')
+    
+#Convert Decimal to Binary (without bin())
+def dec_bin():
+    print('Code:')
+    print('''def dec_bin(decimal):
+    b=''
+    while decimal>0:
+        b+=str(decimal%2)
+        b=b//2
+    print(b)
+TestCases:
+dec_bin(5): 101
+dec(62): 11110
+Explaination:
+Here we used modulus operator(to get reminder) and floor division operator(to get whole numbers) and assigning the whole number again and again after every iteration to the variable storing empty string taken before while loop and by reversing(reverse slicing) reminders we will get the binary number
 ''')
