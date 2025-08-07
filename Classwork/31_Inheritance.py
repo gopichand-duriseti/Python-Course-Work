@@ -112,3 +112,20 @@ manish.addCaption('Silence')
 manish.like()
 manish.addmusic('oohh manishi.mp3')
 manish.videolength('Kalahasthi gadha.mp4')
+'''-------------------------------------------------------------------------------------------------'''
+class Instagram:
+    def __init__(self,username):
+        self.username=username
+        self.post=[]
+        print(f"{self.username.center(40,'-')}")
+class InstagramV1(Instagram):
+    def __init__(self, username,bio):
+        super().__init__(username)
+        self.bio=bio 
+        print(f"{self.username.center(40,'-')}")
+        print(f"bio updated")
+#CONSTRUCTOR IN BOTH PARENT AND CHILD CLASS SO WE USE super().__init__()[If we want access parent properties also in the constructor]
+dinesh=Instagram('dinesh123')
+sanjay=InstagramV1('sanjay','coder')
+#Without Calling we can get the result because of constructor
+
