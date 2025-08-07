@@ -118,14 +118,23 @@ class Instagram:
         self.username=username
         self.post=[]
         print(f"{self.username.center(40,'-')}")
+    def uploadPost(self,image):
+        self.post.append(image)
+        print(f"{image} is posted")
 class InstagramV1(Instagram):
     def __init__(self, username,bio):
         super().__init__(username)
         self.bio=bio 
-        print(f"{self.username.center(40,'-')}")
         print(f"bio updated")
+    def uploadPost(self,post,music):
+        super().uploadPost(post)
+        self.music=music
+        print(f"{self.music} is added")
+
 #CONSTRUCTOR IN BOTH PARENT AND CHILD CLASS SO WE USE super().__init__()[If we want access parent properties also in the constructor]
 dinesh=Instagram('dinesh123')
+dinesh.uploadPost("GoodMorning.png")
 sanjay=InstagramV1('sanjay','coder')
+sanjay.uploadPost("GoodEvng.png","Poratame.mp3")
 #Without Calling we can get the result because of constructor
-
+'''-------------------------------------------------------------------------------------------------'''
