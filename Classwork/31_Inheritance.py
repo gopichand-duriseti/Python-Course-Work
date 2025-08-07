@@ -131,7 +131,7 @@ class InstagramV1(Instagram):
         self.music=music
         print(f"{self.music} is added")
 
-#CONSTRUCTOR IN BOTH PARENT AND CHILD CLASS SO WE USE super().__init__()[If we want access parent properties also in the constructor]
+#CONSTRUCTOR IN BOTH PARENT AND CHILD CLASS SO WE USE super().__init__()[If we want access parent properties from child class in the constructor or if having same methods]
 dinesh=Instagram('dinesh123')
 dinesh.uploadPost("GoodMorning.png")
 sanjay=InstagramV1('sanjay','coder')
