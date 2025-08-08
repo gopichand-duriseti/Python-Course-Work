@@ -1,4 +1,4 @@
-#METHOD OVERRIDING(same method,sama parameters,different behavior)
+#METHOD OVERRIDING(same method,same parameters,different behavior)
 class normalUser:
     def playvideo(self,name):#class normalUser: #base/parent class
         print(f"{name} is playing video with: \n1.Normal Quality\n2.Ads Run\n3.No Backgound Playing\n4.Limited Videos download\n5.Music with ads\n")
