@@ -138,3 +138,18 @@ sanjay=InstagramV1('sanjay','coder')
 sanjay.uploadPost("GoodEvng.png","Poratame.mp3")
 #Without Calling we can get the result because of constructor
 '''-------------------------------------------------------------------------------------------------'''
+class Instagram:
+    def __init__(self,username):
+        self.username=username
+        print(f"{self.username} user is created!parent-1")
+class InstagramV1:
+    def __init__(self, username):
+        self.username=username
+        print(f"{self.username} user is created!parent-2")
+class InstaV2(Instagram,InstagramV1):
+    def __init__(self, username):
+        #super().__init__(username)#Username--Xyz user is created!parent-1 #If multiple usernames exists when using super() you need to mention class name inplace of super to get that particular class result
+        Instagram.__init__(self,username)#Username--Xyz user is created!parent-1 #When you using class instead of super() you have to use self
+        InstagramV1.__init__(self,username)#Username--Xyz user is created!parent-2
+        print("Creating Users from version 3")
+i=InstaV2("Username--Xyz")
