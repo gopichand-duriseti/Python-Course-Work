@@ -48,3 +48,17 @@ dec(62): 11110
 Explaination:
 Here we used modulus operator(to get reminder) and floor division operator(to get whole numbers) and assigning the whole number again and again after every iteration to the variable storing empty string taken before while loop and by reversing(reverse slicing) reminders we will get the binary number
 ''')
+#Number of Days Between Two Dates
+def date_diff():
+    print('Code:')
+    print('''def date_diff(d1,d2):
+    from datetime import datetime
+    diff = abs((datetime.strptime(d2, "%Y-%m-%d") - datetime.strptime(d1, "%Y-%m-%d")).days)
+    print("Days between:", diff)
+d1 = input("Start date (YYYY-MM-DD): ")
+d2 = input("End date (YYYY-MM-DD): ")
+TestCases:
+date_diff('2011-05-20','2012-09-23'):Days between: 492
+date_diff('2025-02-27','2023-07-14'):Days between: 594
+''')
+date_diff()
