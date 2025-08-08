@@ -60,5 +60,6 @@ d2 = input("End date (YYYY-MM-DD): ")
 TestCases:
 date_diff('2011-05-20','2012-09-23'):Days between: 492
 date_diff('2025-02-27','2023-07-14'):Days between: 594
+Explaination:
+The given Python code defines a function date_diff that calculates the absolute number of days between two dates provided in the YYYY-MM-DD format. It uses the datetime.strptime method to convert the input strings into datetime objects and then computes the difference between them.
 ''')
-date_diff()
