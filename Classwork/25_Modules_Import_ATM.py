@@ -26,6 +26,9 @@ return f"Hello, {name}!"
 if __name__ == "__main__":
 print(greet("Alice")) # Executes only when this file is
 run directly
+#output will be Hello, name without calling function or giving name if you run in this file(Hello, Alice)
+#ELSE you have to give name in other file after importing(if not giving name some error will come)
+
 
 ● If you run: python my_module.py → the block executes
 ● If you import it in another file → the block is ignored'''
