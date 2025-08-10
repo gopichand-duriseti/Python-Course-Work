@@ -63,3 +63,22 @@ date_diff('2025-02-27','2023-07-14'):Days between: 594
 Explaination:
 The given Python code defines a function date_diff that calculates the absolute number of days between two dates provided in the YYYY-MM-DD format. It uses the datetime.strptime method to convert the input strings into datetime objects and then computes the difference between them.
 ''')
+#Python Program to Find Largest element an Array
+
+def large_ele():
+    print('Code:')
+    print('''def largest(arr):
+    max_val = arr[0]
+    for num in arr[1:]:
+        if type(num)==int:
+            if num > max_val:
+                max_val = num
+    print(max_value)
+from array import array
+Test Cases:
+array('i', [10, 324, 45, 90, 9808])  # 'i' = integer array
+array('i', [10, 324, 45, 90, 9808])
+Explaination:
+This code defines a function that loops through all elements of a list, comparing each to the current maximum and updating it when a larger value is found.It then calls this function with a given list of numbers and prints the largest value.
+''')
+large_ele()
