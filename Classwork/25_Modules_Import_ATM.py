@@ -20,3 +20,12 @@ while True:
             ModuleATM_25.view_transactions()
     else:
         break
+# my_module.py
+'''def greet(name):
+return f"Hello, {name}!"
+if __name__ == "__main__":
+print(greet("Alice")) # Executes only when this file is
+run directly
+
+● If you run: python my_module.py → the block executes
+● If you import it in another file → the block is ignored'''
