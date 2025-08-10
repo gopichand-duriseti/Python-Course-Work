@@ -1,5 +1,5 @@
 while True:
-    print("Select a Program:")
+    print("Function MENU:")
     print("0.Exit")
     print("1. Reverse Every Word in a Sentence")
     print("2. Print Emoji Right Angle Triangle")
@@ -12,7 +12,7 @@ while True:
     print("9. Sort a List of Tuples by Second Item")
     print("10. Printing Alphabet 'D' Star Pattern with Integer Input as Rows Length")
     print()
-    ch= int(input("Enter your choice: "))
+    ch= int(input("Select your Program: "))
     if ch==0:
         break
 
