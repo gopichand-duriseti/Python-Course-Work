@@ -16,7 +16,7 @@ In this code,we used slicing method to reverse and split() method to get each wo
 #Print Emoji Triangle
 def emoji():
     print("Code:")
-    print('''def emoji(emoji,n):
+    print('''def emoji_triangle(emoji,n):
     for i in range(1,n):
         print(emoji*i)
 TestCases
@@ -30,7 +30,7 @@ emoji('😊',3):-
 😊
 😊😊
 Explaination:
-Here, We used emoji,rows lenght as input() inside function and with the help of for loop iteration done accordingly to print emoji triangle
+Here, We used emoji,rows lenght as input() inside function and with the help of for loop iteration done accordingly to print emoji right angle triangle
 ''')
     
 #Convert Decimal to Binary (without bin())
