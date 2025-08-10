@@ -57,6 +57,4 @@ while True:
         pattern()
 
     else:
-        print("Invalid choice. Please select from 1–10.")
-
-
+        print("Invalid choice. Please select from 1-10.")
