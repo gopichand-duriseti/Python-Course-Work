@@ -8,7 +8,7 @@ while True:
     print("5. Python Program to Find Largest element in an Array")
     print("6. Count the Number of Matching Characters in a Pair of Strings")
     print("7. Generate a Table of Squares")
-    print("8. Check if Binary Representations of Two Numbers are Anagram")
+    print("8. Check if Binary Representations of Two Numbers are Anagrams")
     print("9. Sort a List of Tuples by Second Item")
     print("10. Printing Alphabet 'D' Star Pattern with Integer Input as Rows Length")
     print()
