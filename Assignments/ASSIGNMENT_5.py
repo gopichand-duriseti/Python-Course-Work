@@ -6,4 +6,4 @@
 #display_details(self)---related to train
 #display_details(self)---related to ectrain
 #@classmethod #def servicing(cls):return cls.service---class method
-#@staticmethod #if seats_available>0
+#@staticmethod #if __seats_available>0
