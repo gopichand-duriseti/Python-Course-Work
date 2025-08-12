@@ -94,3 +94,44 @@ class shopping:
 user1=shopping()
 user1.check([],0000)
 shopping.check(['laptop','mobile'],4000) #can access products and price using both class name and object name
+
+'''Write a python program to Create a class Department with the following: Attributes: dept_name (string) hod_name (string) faculty_count (integer) Method: is_faculty_sufficient(min_count) Returns "Yes" if faculty_count == min_count, otherwise "No" Input Format :First line: Department name (string) ,Second line: HOD name (string) ,Third line: Faculty count (integer) and Fourth line: Minimum required count (integer) Output Format :A single line: "Yes" if faculty is sufficient, else "No"'''
+class Department:
+    def __init__(self,dept_name,hod_name,fac_count):
+        self.deptname=dept_name
+        self.hodname=hod_name
+        self.fac_count=fac_count
+    @staticmethod
+    def is_fac_suf(min_c):
+        if min_c==fac_count:
+            return "Yes"
+        else:
+            return "No"
+dept_name=input()
+hod_name=input()
+fac_count=int(input())
+min_c=int(input())
+c=Department(dept_name,hod_name,fac_count)
+print(c.is_fac_suf(min_c))
+
+'''Write a python program to Create a class Department with the following: Attributes: dept_name (string) hod_name (string) faculty_count (integer) 
+Method: is_faculty_sufficient(min_count) Returns "Yes" if faculty_count == min_count, otherwise "No" 
+Input Format :First line: Department name (string) ,Second line: HOD name (string) ,Third line: Faculty count (integer) and Fourth line: Minimum required count (integer) 
+Output Format :A single line: "Yes" if faculty is sufficient, else "No"'''
+class Department:
+    def __init__(self,dept_name,hod_name,fac_count):
+        self.deptname=dept_name
+        self.hodname=hod_name
+        self.fac_count=fac_count
+    @staticmethod
+    def is_fac_suf(min_c):
+        if min_c==fac_count:
+            return "Yes"
+        else:
+            return "No"
+dept_name=input()
+hod_name=input()
+fac_count=int(input())
+min_c=int(input())
+c=Department(dept_name,hod_name,fac_count)
+print(c.is_fac_suf(min_c))
