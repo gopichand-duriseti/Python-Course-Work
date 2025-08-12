@@ -18,8 +18,9 @@ class Train:
         return self.__seats_avail
     def get_details(self):
         return f"Train name is {self.train_name},Number is {self.train_no},total seats available is {self.__seats_avail}"
+    #CLASS METHOD
     @classmethod                         
-    def service(cls):                          #CLASS METHOD
+    def service(cls):
         return cls.services
 class EVTrain(Train):
     def __init__(self, train_name, train_no, seats_avail):
@@ -31,12 +32,13 @@ class Status:
         self.Total_tickets=3000
         self.booked=[]
         self.cancelled=[]
-class PassengerDetails(Status):
+class PassengerDetails(Status,EVTrain):
     def __init__(self,name,age,reservation_choice):
         super().__init__()
         self._name=name
         self.age=age
         self.reservation_choice=reservation_choice
+    #INSTANCE METHODS
     def book_tickets(self,ticket_bought):
         self.booked.append(ticket_bought)
         self.Total_tickets-=1
@@ -46,9 +48,16 @@ class PassengerDetails(Status):
             self.cancelled.append(ticket_to_cancel)
             self.Total_tickets+=1
             return f'Cancelled ticekts are {self.cancelled}\nTotal Tickets Available are: {self.Total_tickets}'
+    #STATIC METHOD
+    @staticmethod
+    def Ticket_Price(count,amt):                
+        return len(count)*amt
 c=EVTrain("hello",123,23)
 print(c.get_details())
 print(c.service())
 p=PassengerDetails('gopi',23,'2s')
 print(p.book_tickets('Hyd-Vij'))
+print(p.book_tickets('Hy-Vij'))
 print(p.cancel_ticket('Hyd-Vij'))
+tot_amt=PassengerDetails.Ticket_Price(p.booked,167)-PassengerDetails.Ticket_Price(p.cancelled,167)
+print(tot_amt)
