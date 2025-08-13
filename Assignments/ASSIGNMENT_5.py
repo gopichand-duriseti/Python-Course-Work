@@ -14,7 +14,8 @@ class Train:
         self.train_name=train_name
         self.train_no=train_no
         self.__seats_avail=seats_avail
-    def seats(self):
+    @property
+    def seats_avail(self):
         return self.__seats_avail
     def get_details(self):
         return f"Train name is {self.train_name},Number is {self.train_no},total seats available is {self.__seats_avail}"
@@ -23,10 +24,8 @@ class Train:
     def service(cls):
         return cls.services
 class EVTrain(Train):
-    def __init__(self, train_name, train_no, seats_avail):
-        super().__init__(train_name, train_no, seats_avail)
     def get_details(self):
-        return f"EV Train name is {self.train_name},Number is {self.train_no},total seats available is {self._Train__seats_avail}"
+        return f"EV Train name is {self.train_name},Number is {self.train_no},total seats available is {self.seats_avail}"
 class Status:
     def __init__(self):
         self.Total_tickets=3000
@@ -61,4 +60,3 @@ print(p.book_tickets('Hy-Vij'))
 print(p.cancel_ticket('Hyd-Vij'))
 tot_amt=PassengerDetails.Ticket_Price(p.booked,167)
 tot_amt_canc=PassengerDetails.Ticket_Price(p.cancelled,167)
-
