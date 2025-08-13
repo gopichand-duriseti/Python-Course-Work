@@ -59,5 +59,6 @@ p=PassengerDetails('gopi',23,'2s')
 print(p.book_tickets('Hyd-Vij'))
 print(p.book_tickets('Hy-Vij'))
 print(p.cancel_ticket('Hyd-Vij'))
-tot_amt=PassengerDetails.Ticket_Price(p.booked,167)-PassengerDetails.Ticket_Price(p.cancelled,167)
-print(tot_amt)
+tot_amt=PassengerDetails.Ticket_Price(p.booked,167)
+tot_amt_canc=PassengerDetails.Ticket_Price(p.cancelled,167)
+
