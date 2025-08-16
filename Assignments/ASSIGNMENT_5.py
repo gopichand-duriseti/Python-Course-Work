@@ -44,41 +44,43 @@ class Status:
         self.booked=[]
         self.cancelled=[]
         self.passengers_name=set()
-class PassengerDetails(Status,Train):
-    def __init__(self,name,age,reservation_choice,train_name,train_no,seats_avail,Tot_Train_Avail):
-        Status.__init__(self)
-        Train.__init__(self,train_name,train_no,seats_avail,Tot_Train_Avail)
+class PassengerDetails:
+    def __init__(self,name,age,reservation_choice,train:Train):
         self._name=name
         self.age=age
         self.reservation_choice=reservation_choice
-    #INSTANCE METHODS
+        self.train=train
+        self.status=Status()
+
     def book_tickets(self,ticket_bought):
-        self.booked.append(ticket_bought)
-        self.seats_avail-=1
-        self.passengers_name.add(self._name)
-        return f'Booked tickets are {self.booked}\nTotal Seats Available are: {self.seats_avail}'
+        self.status.booked.append(ticket_bought)
+        self.train.seats_avail-=1
+        self.status.passengers_name.add(self._name)
+        return f'Booked tickets: {self.status.booked}, Seats left: {self.train.seats_avail}'
+
     def cancel_ticket(self,ticket_to_cancel):
-        if ticket_to_cancel in self.booked:
-            self.cancelled.append(ticket_to_cancel)
-            self.seats_avail+=1
-            return f'Cancelled ticekts are {self.cancelled}\nTotal Seats Available are: {self.seats_avail}'
+        if ticket_to_cancel in self.status.booked:
+            self.status.cancelled.append(ticket_to_cancel)
+            self.train.seats_avail+=1
+            return f'Cancelled ticekts are {self.status.cancelled},Total Seats Available: {self.train.seats_avail}'
     #STATIC METHOD
     @staticmethod
-    def Ticket_Price(count,amt):                
+    def Tot_Ticket_Price_Booked(count,amt):                
         return len(count)*amt
     @staticmethod
     def passenger_count(count_pas):
         return len(count_pas)
 
-t=Train("hii",134567,167,900)
+t=Train("hii",134567,190,900)
 print(t.get_details())
 c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
 print(c.service())
-p=PassengerDetails('gopi',23,'2s','hello',12345678,160,1100)
+p=PassengerDetails('gopi',23,'2s',t)
 print(p.book_tickets('Hyd-Vij'))
 print(p.book_tickets('Hy-Vij'))
 print(p.cancel_ticket('Hyd-Vij'))
-print(PassengerDetails.passenger_count(p.passengers_name))
-tot_amt=PassengerDetails.Ticket_Price(p.booked,167)
-tot_amt_canc=PassengerDetails.Ticket_Price(p.cancelled,167)
+print(p.passenger_count(p.status.passengers_name))
+tot_amt=p.Tot_Ticket_Price_Booked(p.status.booked,167)
+tot_amt_canc=p.Tot_Ticket_Price_Booked(p.status.cancelled,167)
+print(tot_amt-tot_amt_canc)
