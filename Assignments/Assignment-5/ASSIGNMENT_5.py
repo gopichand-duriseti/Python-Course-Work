@@ -45,7 +45,7 @@ class Status:
         self.history={"booked":[],"cancelled":[]}
         self.passengers_name=set()
 class PassengerDetails:
-    def __init__(self,name,age,reservation_choice,train:Train):
+    def __init__(self,train:Train,name=None,age=None,reservation_choice=None):
         self._name=name
         self.age=age
         self.reservation_choice=reservation_choice
