@@ -1,12 +1,6 @@
 from ASSIGNMENT_5 import *
 
 #Cost should be checked by considering train and reservation choice
-irctc_menu = {
-    1: "Booking",
-    2: "Cancelling",
-    3: "View Transactions",
-    4: "Total Money Gain/Loss"
-}
 print('''
 1: "Booking",
 2: "Cancelling",
@@ -14,19 +8,23 @@ print('''
 4: "Total Money Gain/Loss"
 ''')
 ch=int(input("Enter your Choice: "))
-train_name=input("Enter train name: ")
-train_no=int(input("Enter train number: "))
-seats_avail=int(input("Enter the Seats available: "))
-Tot_Train_Avail=int(input("Enter number of trains available: "))
+
 if ch==1:
-    t=Train(train_name,train_no,seats_avail,Tot_Train_Avail)
+    train_name=input("Enter train name: ")
+    train_no=int(input("Enter train number: "))
+    seats_avail=int(input("Enter the Seats available: "))
+    Tot_Train_Avail=int(input("Enter number of trains available: "))
+    t=Train(train_name=input("Enter train name: "),train_no=int(input("Enter train no: ")),seats_avail=int(input("Enter seats_avail: ")))
     name=input("Enter your name: ")
     age=int(input("Enter your age: "))
     reservation_choice=input("Enter your reservation_choice: ")
     p=PassengerDetails(name,age,reservation_choice,t)
     print(p.book_tickets(input("Enter your journey: ")))
     print(p.book_tickets(input('Enter your journey: ')))
+if ch==2:
+    p=PassengerDetails(name,age,reservation_choice)
     print(p.cancel_ticket(input('Enter the journey you booked: ')))
+
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
 print(c.service())

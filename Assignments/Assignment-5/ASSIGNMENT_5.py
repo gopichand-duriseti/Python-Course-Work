@@ -16,11 +16,10 @@ class TrainAb(ABC):
         pass
 class Train(TrainAb):
     services=['Train Booking','Cancelling Train Ticket']
-    def __init__(self,train_name,train_no,seats_avail,Tot_Train_Avail):
+    def __init__(self,train_name,train_no,seats_avail):
         self.train_name=train_name
         self.train_no=train_no
         self.__seats_avail=seats_avail
-        self.Tot_Train_Avail=Tot_Train_Avail
     @property
     def seats_avail(self):
         return self.__seats_avail
