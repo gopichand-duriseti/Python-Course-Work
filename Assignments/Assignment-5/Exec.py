@@ -8,7 +8,7 @@ print('''
 3: "View Transactions"
 4: "Total Money Gain/Loss"
 ''')
-ch=int(input("Enter your Choice: "))
+ch=int(input("Enter your choice: "))
 train_name=input("Enter train name: ")
 train_no=int(input("Enter train no: "))
 seats_avail=int(input("Enter seats_avail: "))
