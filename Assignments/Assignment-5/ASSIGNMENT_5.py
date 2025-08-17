@@ -43,6 +43,7 @@ class Status:
     def __init__(self):
         self.booked=[]
         self.cancelled=[]
+        self.history={"booked":[],"cancelled":[]}
         self.passengers_name=set()
 class PassengerDetails:
     def __init__(self,name,age,reservation_choice,train:Train):
@@ -56,12 +57,16 @@ class PassengerDetails:
         self.status.booked.append(ticket_bought)
         self.train.seats_avail-=1
         self.status.passengers_name.add(self._name)
+        self.status.history['booked'].append(ticket_bought)
+        print(self.status.history)
         return f'Booked tickets: {self.status.booked}, Seats left: {self.train.seats_avail}'
 
     def cancel_ticket(self,ticket_to_cancel):
         if ticket_to_cancel in self.status.booked:
             self.status.cancelled.append(ticket_to_cancel)
             self.train.seats_avail+=1
+            self.status.history['cancelled'].append(ticket_to_cancel)
+            print(self.status.history)
             return f'Cancelled ticekts are {self.status.cancelled},Total Seats Available: {self.train.seats_avail}'
     #STATIC METHOD
     @staticmethod
