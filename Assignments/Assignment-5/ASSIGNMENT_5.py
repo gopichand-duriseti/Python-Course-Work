@@ -74,5 +74,3 @@ class PassengerDetails:
     @staticmethod
     def passenger_count(count_pas):
         return len(count_pas)
-
-
