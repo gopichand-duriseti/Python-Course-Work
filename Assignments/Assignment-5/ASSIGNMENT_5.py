@@ -29,7 +29,7 @@ class Train(TrainAb):
             self.__seats_avail=value
         else:
             raise ValueError("Seats cannot be negative")
-    def get_details(self):
+    def get_details(self): #get details of booked train
         return f"Train name is {self.train_name},Number is {self.train_no},Total seats available is {self.seats_avail}"
     #CLASS METHOD
     @classmethod                         
