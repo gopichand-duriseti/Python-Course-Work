@@ -53,7 +53,7 @@ if ch==1:
         p=PassengerDetails(name,age,reservation_choice,t)
         print(p.book_tickets(input("Enter your journey: ")))
 elif ch==2:
-    p=PassengerDetails(name,age,reservation_choice,t)
+    #p=PassengerDetails(name,age,reservation_choice,t)
     print(p.cancel_ticket(input('Enter the journey you booked: ')))
 
 '''c=EVTrain("hello",123456,23,1000)
