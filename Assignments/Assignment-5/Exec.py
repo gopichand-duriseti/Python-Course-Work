@@ -40,6 +40,26 @@ trains_available = {
     "guwahati express": {"journeys": "ghy to hwh", "seats_available": 90}
 }
 
+EC_train_names = [
+    "vande bharat express","amrit bharat express","howrah rajdhani express","mumbai rajdhani express","bhopal shatabdi express",
+    "kalka shatabdi express","sealdah duronto express","mumbai duronto express"
+]
+
+
+EC_trains_available = {
+    "vande bharat express": {
+        "journeys": ["ndls to bsb", "ndls to svdk", "bct to gnr", "mas to mys", "sc to vskp"],
+        "seats_available": 1128
+    },
+    "amrit bharat express": {"journeys": "ndls to gkp", "seats_available": 1200},
+    "howrah rajdhani express": {"journeys": "hwh to ndls", "seats_available": 1300},
+    "mumbai rajdhani express": {"journeys": "bct to ndls", "seats_available": 1250},
+    "bhopal shatabdi express": {"journeys": "ndls to bpl", "seats_available": 850},
+    "kalka shatabdi express": {"journeys": "ndls to klk", "seats_available": 700},
+    "sealdah duronto express": {"journeys": "sda to ndls", "seats_available": 950},
+    "mumbai duronto express": {"journeys": "bct to hwh", "seats_available": 1000}
+}
+
 
 
 if ch==1:
@@ -51,6 +71,13 @@ if ch==1:
         reservation_choice=input("Enter your reservation choice: ")
         t=Train(train_name,journey,trains_available[train_name]['seats_available'])
         p=PassengerDetails(name,age,reservation_choice,t)
+        print(p.book_tickets(journey))
+    elif train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and EC_trains_available[train_name]['seats_available']>0:
+        name=input("Enter your name: ")
+        age=int(input("Enter your age: "))
+        reservation_choice=input("Enter your reservation choice: ")
+        e=ECTrain(train_name,journey,EC_trains_available[train_name]['seats_available'])
+        p=PassengerDetails(name,age,reservation_choice,e)
         print(p.book_tickets(journey))
 elif ch==2:
     pass

@@ -35,9 +35,9 @@ class Train(TrainAb):
     @classmethod                         
     def service(cls):
         return cls.services
-class EVTrain(Train):
+class ECTrain(Train):
     def get_details(self):
-        return f"EV Train name is {self.train_name},Number is {self.train_no},Total seats available is {self.seats_avail}"
+        return f"EC Train name is {self.train_name},Number is {self.train_no},Total seats available is {self.seats_avail}"
 class Status:
     def __init__(self):
         self.booked=[]
@@ -45,12 +45,13 @@ class Status:
         self.history={"booked":[],"cancelled":[]}
         self.passengers_name=set()
 class PassengerDetails:
-    def __init__(self,train:Train,name=None,age=None,reservation_choice=None):
-        self._name=name
-        self.age=age
-        self.reservation_choice=reservation_choice
-        self.train=train
-        self.status=Status()
+    def __init__(self, name=None, age=None, reservation_choice=None, train=None):
+        self._name = name
+        self.age = age
+        self.reservation_choice = reservation_choice
+        self.train = train
+        self.status = Status()
+
 
     def book_tickets(self,ticket_bought):
         self.status.booked.append(ticket_bought)
@@ -59,6 +60,10 @@ class PassengerDetails:
         self.status.history['booked'].append(ticket_bought)
         print(self.status.history)
         return f'Booked tickets: {self.status.booked}, Seats left: {self.train.seats_avail}'
+    
+    def __str__(self):
+        return f"Passenger: {self._name}, Age: {self.age}, Train: {self.train.train_name}, Seats left: {self.train.seats_avail}"
+
 
     def cancel_ticket(self,ticket_to_cancel):
         if ticket_to_cancel in self.status.booked:
