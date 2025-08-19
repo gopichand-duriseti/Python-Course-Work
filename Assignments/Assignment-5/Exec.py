@@ -41,7 +41,7 @@ trains_available = {
 }
 
 EC_train_names = [
-    "vande bharat express","amrit bharat express","howrah rajdhani express","mumbai rajdhani express","bhopal shatabdi express",
+    "vande bharat express","amrit bharat express","howrah rajdhani exprss","mumbai rajdhani express","bhopal shatabdi express",
     "kalka shatabdi express","sealdah duronto express","mumbai duronto express"
 ]
 
