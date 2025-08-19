@@ -63,7 +63,6 @@ EC_trains_available = {
     "mumbai duronto express": {"train_no": 12261, "journeys": "bct to hwh", "seats_available": 1000}
 }
 
-
 while True:
     ch=int(input("Enter your choice: "))
     if ch==0:
@@ -97,6 +96,9 @@ while True:
         e=ECTrain(EC_train_name,EC_trains_available[EC_train_name]['train_no'],EC_trains_available[EC_train_name]['seats_available'],
                 EC_trains_available[EC_train_name]['journeys'])
         print(e.get_details())
+    elif ch==7:
+        p=PassengerDetails()
+        print(p.passenger_count(p.status.passengers_name))
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
 print(c.service())

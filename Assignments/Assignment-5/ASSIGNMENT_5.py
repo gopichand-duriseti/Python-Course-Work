@@ -53,7 +53,6 @@ class PassengerDetails:
         self.train = train
         self.status = Status()
 
-
     def book_tickets(self,ticket_bought):
         self.status.booked.append(ticket_bought)
         self.train.seats_avail-=1
