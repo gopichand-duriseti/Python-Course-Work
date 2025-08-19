@@ -1,6 +1,5 @@
 from ASSIGNMENT_5 import *
 
-#Cost should be checked by considering train and reservation choice
 print('''
 0: "Exit"      
 1: "Booking"
@@ -11,13 +10,12 @@ print('''
 6: "ECTrain Details"      
 ''')
 
-train_names=['hyderabad express', 'chennai superfast', 'delhi rajdhani', 'mumbai shatabdi', 
- 'bangalore intercity', 'kolkata duronto', 'pune express', 'ahmedabad garib rath', 
- 'lucknow mail', 'patna sampark kranti', 'secunderabad jan shatabdi', 
- 'jaipur double decker', 'bhubaneswar express', 'trivandrum kerala express', 
- 'goa mandovi express', 'varanasi express', 'nagpur duronto', 
- 'mysore express', 'coimbatore intercity', 'guwahati express']
-
+train_names = ['hyderabad express', 'chennai superfast', 'delhi rajdhani', 'mumbai shatabdi',
+               'bangalore intercity', 'kolkata duronto', 'pune express', 'ahmedabad garib rath',
+               'lucknow mail', 'patna sampark kranti', 'secunderabad jan shatabdi',
+               'jaipur double decker', 'bhubaneswar express', 'trivandrum kerala express',
+               'goa mandovi express', 'varanasi express', 'nagpur duronto',
+               'mysore express', 'coimbatore intercity', 'guwahati express']
 
 trains_available = {
     "hyderabad express": {"train_no": 17001, "journeys": "hyd to vskp", "seats_available": 120},
@@ -43,10 +41,9 @@ trains_available = {
 }
 
 EC_train_names = [
-    "vande bharat express","amrit bharat express","howrah rajdhani exprss","mumbai rajdhani express","bhopal shatabdi express",
-    "kalka shatabdi express","sealdah duronto express","mumbai duronto express"
+    "vande bharat express", "amrit bharat express", "howrah rajdhani express", "mumbai rajdhani express",
+    "bhopal shatabdi express", "kalka shatabdi express", "sealdah duronto express", "mumbai duronto express"
 ]
-
 
 EC_trains_available = {
     "vande bharat express": {
@@ -63,42 +60,67 @@ EC_trains_available = {
     "mumbai duronto express": {"train_no": 12261, "journeys": "bct to hwh", "seats_available": 1000}
 }
 
+# Shared status object
+s = Status()
+p = None  # keep global passenger reference for cancellation
+
 while True:
-    ch=int(input("Enter your choice: "))
-    if ch==0:
+    ch = int(input("Enter your choice: "))
+
+    if ch == 0:
         break
-    elif ch==1:
-        train_name=input("Enter train name: ").lower()
-        journey=input("Enter train number(eg:-hyd to vskp): ") .lower()
-        if train_name in train_names and journey in trains_available[train_name]['journeys'] and trains_available[train_name]['seats_available']>0:
-            name=input("Enter your name: ")
-            age=int(input("Enter your age: "))
-            reservation_choice=input("Enter your reservation choice: ")
-            t=Train(train_name,journey,trains_available[train_name]['seats_available'])
-            p=PassengerDetails(name,age,reservation_choice,t)
+
+    elif ch == 1:
+        train_name = input("Enter train name: ").lower()
+        journey = input("Enter journey (eg:- hyd to vskp): ").lower()
+
+        # Normal trains
+        if (train_name in train_names and journey in trains_available[train_name]['journeys'] and
+            trains_available[train_name]['seats_available'] > 0):
+
+            name = input("Enter your name: ")
+            age = int(input("Enter your age: "))
+            reservation_choice = input("Enter your reservation choice: ")
+            t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'])
+            p = PassengerDetails(name, age, reservation_choice, t, s)
             print(p.book_tickets(journey))
-        elif train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and EC_trains_available[train_name]['seats_available']>0:
-            name=input("Enter your name: ")
-            age=int(input("Enter your age: "))
-            reservation_choice=input("Enter your reservation choice: ")
-            e=ECTrain(train_name,journey,EC_trains_available[train_name]['seats_available'])
-            p=PassengerDetails(name,age,reservation_choice,e)
+
+            # update dictionary
+            trains_available[train_name]['seats_available'] = t.seats_avail
+
+        # EC trains
+        elif (train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and
+              EC_trains_available[train_name]['seats_available'] > 0):
+
+            name = input("Enter your name: ")
+            age = int(input("Enter your age: "))
+            reservation_choice = input("Enter your reservation choice: ")
+            e = ECTrain(train_name, EC_trains_available[train_name]['train_no'], EC_trains_available[train_name]['seats_available'])
+            p = PassengerDetails(name, age, reservation_choice, e, s)
             print(p.book_tickets(journey))
-    elif ch==2:
-        print(p.cancel_ticket(input('Enter the journey you booked: ')))
-    elif ch==5:
-        train_name=input("Enter train name: ")
-        t=Train(train_name,trains_available[train_name]['train_no'],trains_available[train_name]['seats_available'],
-                trains_available[train_name]['journeys'])
+
+            # update dictionary
+            EC_trains_available[train_name]['seats_available'] = e.seats_avail
+
+    elif ch == 2:
+        if p:
+            print(p.cancel_ticket(input('Enter the journey you booked: ')))
+
+    elif ch == 5:
+        train_name = input("Enter train name: ")
+        t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
+                  trains_available[train_name]['journeys'])
         print(t.get_details())
-    elif ch==6:
-        EC_train_name=input("Enter EC Train name: ")
-        e=ECTrain(EC_train_name,EC_trains_available[EC_train_name]['train_no'],EC_trains_available[EC_train_name]['seats_available'],
-                EC_trains_available[EC_train_name]['journeys'])
+
+    elif ch == 6:
+        EC_train_name = input("Enter EC Train name: ")
+        e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
+                    EC_trains_available[EC_train_name]['journeys'])
         print(e.get_details())
-    elif ch==7:
-        p=PassengerDetails()
-        print(p.passenger_count(p.status.passengers_name))
+
+    elif ch == 7:
+        print(PassengerDetails.passenger_count(s.passengers_name))
+
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
 print(c.service())
