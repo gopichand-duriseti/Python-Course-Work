@@ -1,6 +1,4 @@
 import os
-if os.path.exists("example.txt"):
-    file = open("example.txt", "r")
-    print("File opened successfully.")
-else:
-    print("File does not exist.")
+file_path = os.path.join("folder", "example.txt")
+with open(file_path, "r") as file:
+    print(file.read())
