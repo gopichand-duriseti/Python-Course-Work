@@ -57,3 +57,24 @@ if os.path.exists(file_path):
     print("Absolute Path:", os.path.abspath(file_path))
 else:
     print("File does not exist")
+
+
+'''DIRECTORY OPERATIONS IN PYTHON'''
+#Creating a Directory
+import os
+os.mkdir("new_folder") #Creates a single directory
+
+#Creating Nested Directories
+os.makedirs("parent_folder/child_folder")
+
+#Checking if a Directory Exists
+if not os.path.exists("new_folder"):
+    os.mkdir("new_folder")
+
+#Removing a Directory
+import os
+os.rmdir("new_folder") # Removes an empty directory
+
+#Removing a Non-Empty Directory
+import shutil
+shutil.rmtree("parent_folder") # Deletes folder and all its contents
