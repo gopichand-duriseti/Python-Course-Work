@@ -16,10 +16,11 @@ class TrainAb(ABC):
         pass
 class Train(TrainAb):
     services=['Train Booking','Cancelling Train Ticket']
-    def __init__(self,train_name,train_no,seats_avail):
+    def __init__(self,train_name,train_no,seats_avail,journeys=None):
         self.train_name=train_name
         self.train_no=train_no
         self.__seats_avail=seats_avail
+        self.journey=journeys
     @property
     def seats_avail(self):
         return self.__seats_avail
@@ -30,14 +31,14 @@ class Train(TrainAb):
         else:
             raise ValueError("Seats cannot be negative")
     def get_details(self): #get details of booked train
-        return f"Train name is {self.train_name},Number is {self.train_no},Total seats available is {self.seats_avail}"
+        return f"Train name is {self.train_name},train number is {self.train_no},Total seats available is {self.seats_avail} and journeys are '{self.journey}'"
     #CLASS METHOD
     @classmethod                         
     def service(cls):
         return cls.services
 class ECTrain(Train):
     def get_details(self):
-        return f"EC Train name is {self.train_name},Number is {self.train_no},Total seats available is {self.seats_avail}"
+        return f"EC Train name is {self.train_name},train number is {self.train_no},Total seats available is {self.seats_avail} and journeys are '{self.journey}'"
 class Status:
     def __init__(self):
         self.booked=[]
