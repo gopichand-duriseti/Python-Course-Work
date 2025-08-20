@@ -1,1 +1,12 @@
-"Data and Codes are in google colab"
+import numpy as np
+
+#print(np)
+
+arr1=np.array([1,2,3,4,5])
+print("1-dim",arr1,sep='\n',end='\n\n')
+
+arr2=np.array([[1,2,3],[4,5,6]])
+print("2-dim",arr2,sep='\n',end='\n\n')
+
+arr3=np.array([[1,2],[3,4],[5,6]])
+print("3-dim",arr3,sep='\n',end='\n\n')
