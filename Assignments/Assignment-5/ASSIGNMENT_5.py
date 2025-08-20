@@ -74,7 +74,6 @@ class PassengerDetails:
         self.train.seats_avail -= 1
         self.status.passengers_name.add(self._name)
         self.status.history['booked'].append(ticket_bought)
-        print(self.status.history)
         return f'Booked tickets: {self.status.booked}, Seats left: {self.train.seats_avail}'
 
     def __str__(self):
@@ -85,8 +84,9 @@ class PassengerDetails:
             self.status.cancelled.append(ticket_to_cancel)
             self.train.seats_avail += 1
             self.status.history['cancelled'].append(ticket_to_cancel)
-            print(self.status.history)
             return f'Cancelled tickets are {self.status.cancelled}, Total Seats Available: {self.train.seats_avail}'
+    def train_history(self):
+        return self.status.history
 
     # STATIC METHODS
     @staticmethod

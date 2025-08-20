@@ -63,10 +63,8 @@ EC_trains_available = {
 # Shared status object
 s = Status()
 p = None  # keep global passenger reference for cancellation
-
 while True:
     ch = int(input("Enter your choice: "))
-
     if ch == 0:
         break
 
@@ -105,7 +103,9 @@ while True:
     elif ch == 2:
         if p:
             print(p.cancel_ticket(input('Enter the journey you booked: ')))
-
+    elif ch==4:
+        if p:
+            print(p.train_history())
     elif ch == 5:
         train_name = input("Enter train name: ")
         t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
@@ -120,6 +120,7 @@ while True:
 
     elif ch == 7:
         print(PassengerDetails.passenger_count(s.passengers_name))
+        
 
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
