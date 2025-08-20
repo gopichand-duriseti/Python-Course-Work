@@ -62,6 +62,7 @@ class Status:
 
 
 class PassengerDetails:
+    u=[]
     def __init__(self, name=None, age=None, reservation_choice=None, train=None, status=None):
         self._name = name
         self.age = age
@@ -87,11 +88,14 @@ class PassengerDetails:
             return f'Cancelled tickets are {self.status.cancelled}'
     def train_history(self):
         return self.status.history
-
+    @classmethod
+    def ticket(cls):
+        return cls.u
     # STATIC METHODS
     @staticmethod
-    def Tot_Ticket_Price_Booked(count, amt):
-        return len(count) * amt
+    def Tot_Ticket_Price_Booked(s,amt):
+        s.append(amt)
+        return sum(s)
 
     @staticmethod
     def passenger_count(count_pas):
