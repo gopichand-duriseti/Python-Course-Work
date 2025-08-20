@@ -67,11 +67,11 @@ while True:
     print('''
 0: "Exit"      
 1: "Booking"
-2: "Cancelling"
+2: "Cancelling and Refund Information"
 3: "View Transactions"
-4: "Total Money Gain/Loss"
+4: "Total Money Spent"
 5: "Train Details"
-6: "ECTrain Details"      
+6: "ECTrain Details"
 ''')
     ch = int(input("Enter your choice: "))
     if ch == 0:
@@ -114,7 +114,11 @@ while True:
             l1.append(name)
     elif ch == 2:
         if p:
-            print(p.cancel_ticket(input('Enter the journey you booked: ')))
+            jr=input('Enter the journey you booked: ')
+            if p.cancel_ticket(jr):
+                print(f'Total Refund: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket_c(),trains_available[train_name]['ticket_price'][p.reservation_choice])}')
+            else:
+                print("No tickets booked to cancel")
         else:
             print('No tickets cancelled')
         
@@ -139,8 +143,10 @@ while True:
         e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
                     EC_trains_available[EC_train_name]['journeys'])
         print(e.get_details())
-
-    elif ch == 7:
+    elif ch==7:
+        if p.reservation_choice in trains_available[train_name]['ticket_price']:
+            pass
+    elif ch == 8:
         print(PassengerDetails.passenger_count(s.passengers_name))
         
 

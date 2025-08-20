@@ -63,6 +63,7 @@ class Status:
 
 class PassengerDetails:
     u=[]
+    u1=[]
     def __init__(self, name=None, age=None, reservation_choice=None, train=None, status=None):
         self._name = name
         self.age = age
@@ -84,6 +85,7 @@ class PassengerDetails:
 
     def cancel_ticket(self, ticket_to_cancel):
         if ticket_to_cancel in self.status.booked:
+            self.status.booked.remove(ticket_to_cancel)
             self.status.cancelled.append(ticket_to_cancel)
             self.train.seats_avail += 1
             self.status.history['cancelled'].append(ticket_to_cancel)
@@ -93,6 +95,9 @@ class PassengerDetails:
     @classmethod
     def ticket(cls):
         return cls.u
+    @classmethod
+    def ticket_c(cls):
+        return cls.u1
     # STATIC METHODS
     @staticmethod
     def Tot_Ticket_Price_Booked(s,amt):
