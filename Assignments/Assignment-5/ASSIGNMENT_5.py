@@ -71,12 +71,14 @@ class PassengerDetails:
         self.status = status   # shared status object
 
     def book_tickets(self, ticket_bought):
-        self.status.booked.append(ticket_bought)
-        self.train.seats_avail -= 1
-        self.status.passengers_name.add(self._name)
-        self.status.history['booked'].append(ticket_bought)
-        return f'Booked tickets: {self.status.booked}'
-
+        if self.train.seats_avail>0:
+            self.status.booked.append(ticket_bought)
+            self.train.seats_avail -= 1
+            self.status.passengers_name.add(self._name)
+            self.status.history['booked'].append(ticket_bought)
+            return f'Booked tickets: {self.status.booked}'
+        else:
+            return "No seats left for this Train"
     def __str__(self):
         return f"Passenger: {self._name}, Age: {self.age}, Train: {self.train.train_name}, Seats left: {self.train.seats_avail}"
 

@@ -62,7 +62,17 @@ EC_trains_available = {
 s = Status()
 p = None  # keep global passenger reference for cancellation
 l=[]
+l1=[]
 while True:
+    print('''
+0: "Exit"      
+1: "Booking"
+2: "Cancelling"
+3: "View Transactions"
+4: "Total Money Gain/Loss"
+5: "Train Details"
+6: "ECTrain Details"      
+''')
     ch = int(input("Enter your choice: "))
     if ch == 0:
         break
@@ -76,38 +86,43 @@ while True:
             trains_available[train_name]['seats_available'] > 0):
 
             name = input("Enter your name: ")
-            if name not in l:
-                age = int(input("Enter your age: "))
-                reservation_choice = input("Enter your reservation choice: ")
+            age = int(input("Enter your age: "))
+            reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
+            if name not in l and all(i.isalpha() or i.isspace() for i in name) and reservation_choice in trains_available[train_name]['ticket_price']:
                 t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'])
                 p = PassengerDetails(name, age, reservation_choice, t, s)
                 print(p.book_tickets(journey))
-                # update dictionary
+                    # update dictionary
                 trains_available[train_name]['seats_available'] = t.seats_avail
             else:
-                raise ValueError("Name already registered for a ticket")
+                print("Invalid input of Name/Reservation Choice")
             l.append(name)
         # EC trains
         elif (train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and
               EC_trains_available[train_name]['seats_available'] > 0):
-
             name = input("Enter your name: ")
             age = int(input("Enter your age: "))
-            reservation_choice = input("Enter your reservation choice: ")
-            e = ECTrain(train_name, EC_trains_available[train_name]['train_no'], EC_trains_available[train_name]['seats_available'])
-            p = PassengerDetails(name, age, reservation_choice, e, s)
-            print(p.book_tickets(journey))
-
-            # update dictionary
-            EC_trains_available[train_name]['seats_available'] = e.seats_avail
-
+            reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
+            if name not in l and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in trains_available[train_name]['ticket_price']:
+                e = ECTrain(train_name, EC_trains_available[train_name]['train_no'], EC_trains_available[train_name]['seats_available'])
+                p = PassengerDetails(name, age, reservation_choice, e, s)
+                print(p.book_tickets(journey))
+                # update dictionary
+                EC_trains_available[train_name]['seats_available'] = e.seats_avail
+            else:
+                print("Invalid input of name/reservation choice")
+            l1.append(name)
     elif ch == 2:
         if p:
             print(p.cancel_ticket(input('Enter the journey you booked: ')))
+        else:
+            print('No tickets cancelled')
         
     elif ch==3:
         if p:
             print(p.train_history())
+        else:
+            print("No Booking/cancelled History")
 
     elif ch==4:
         if p.reservation_choice in trains_available[train_name]['ticket_price']:
