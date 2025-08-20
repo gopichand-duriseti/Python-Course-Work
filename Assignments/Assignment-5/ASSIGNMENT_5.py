@@ -10,7 +10,7 @@
 
 # Printing the IRCTC banner
 print("IRCTC".center(100, "-"))
-print("IRCTC".center(100, "-"))
+print()
 
 # Importing Abstract Base Class (ABC) and abstractmethod for abstraction
 from abc import ABC, abstractmethod

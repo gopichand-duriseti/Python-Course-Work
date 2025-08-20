@@ -43,6 +43,7 @@ l1 = []        # List to store names of passengers who booked EC trains
 # ----------------------- MENU LOOP -----------------------
 while True:
     # Display menu options
+    print('MENU:-',end='')
     print('''
 0: "Exit"      
 1: "Booking"
