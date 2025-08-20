@@ -13,8 +13,10 @@ train_names = ['hyderabad express', 'chennai superfast', 'delhi rajdhani', 'mumb
 trains_available = {
     "hyderabad express": {"train_no": 17001, "journeys": "hyd to vskp", "seats_available": 120,
                           "ticket_price": {"2S": 120, "SL": 180, "3A": 360, "2A": 540, "1A": 840}},
-    # ... (other trains follow same structure)
+    "chennai superfast": {"train_no": 12601, "journeys": "chennai to bangalore", "seats_available": 150,
+                          "ticket_price": {"2S": 100, "SL": 160, "3A": 340, "2A": 500, "1A": 800}}
 }
+    # ... (other trains follow same structure)
 
 # List of ECTrain names
 EC_train_names = [
@@ -24,11 +26,13 @@ EC_train_names = [
 
 # Dictionary for ECTrains (same structure but larger seat capacity)
 EC_trains_available = {
-    "vande bharat express": {"train_no": 22435, "journeys": ["ndls to bsb", "ndls to svdk", "bct to gnr"],
-                             "seats_available": 1128,
-                             "ticket_price": {"2S": 400, "SL": 600, "3A": 1200, "2A": 1800, "1A": 2800}},
-    # ... (other EC trains follow)
+    "vande bharat express": {"train_no": 22435, "journeys": "ndls to bsb", "seats_available": 1128,
+                              "ticket_price": {"2S": 400, "SL": 600, "3A": 1200, "2A": 1800, "1A": 2800}},
+    "amrit bharat express": {"train_no": 22436, "journeys": "ndls to bpl", "seats_available": 980,
+                              "ticket_price": {"2S": 380, "SL": 560, "3A": 1100, "2A": 1700, "1A": 2600}}
 }
+
+    # ... (other EC trains follow)
 
 # ----------------------- INITIALIZATION -----------------------
 s = Status()   # Shared Status object to track bookings/cancellations
