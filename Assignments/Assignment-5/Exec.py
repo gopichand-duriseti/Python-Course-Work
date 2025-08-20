@@ -1,15 +1,5 @@
 from ASSIGNMENT_5 import *
 
-print('''
-0: "Exit"      
-1: "Booking"
-2: "Cancelling"
-3: "View Transactions"
-4: "Total Money Gain/Loss"
-5: "Train Details"
-6: "ECTrain Details"      
-''')
-
 train_names = ['hyderabad express', 'chennai superfast', 'delhi rajdhani', 'mumbai shatabdi',
                'bangalore intercity', 'kolkata duronto', 'pune express', 'ahmedabad garib rath',
                'lucknow mail', 'patna sampark kranti', 'secunderabad jan shatabdi',
@@ -72,6 +62,8 @@ while True:
 4: "Total Money Spent"
 5: "Train Details"
 6: "ECTrain Details"
+7: "List of your names used during booking"
+8: "Main Services Provided"          
 ''')
     ch = int(input("Enter your choice: "))
     if ch == 0:
@@ -95,7 +87,7 @@ while True:
                     # update dictionary
                 trains_available[train_name]['seats_available'] = t.seats_avail
             else:
-                print("Invalid input of Name/Reservation Choice")
+                print("Invalid/Repetetive Input of Name/Reservation Choice")
             l.append(name)
         # EC trains
         elif (train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and
@@ -124,7 +116,7 @@ while True:
         
     elif ch==3:
         if p:
-            print(p.train_history())
+            print(f'History:{p.train_history()}')
         else:
             print("No Booking/cancelled History")
 
@@ -143,12 +135,13 @@ while True:
         e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
                     EC_trains_available[EC_train_name]['journeys'])
         print(e.get_details())
-    elif ch==7:
-        if p.reservation_choice in trains_available[train_name]['ticket_price']:
-            pass
-    elif ch == 8:
-        print(PassengerDetails.passenger_count(s.passengers_name))
-        
+    elif ch == 7:
+        print(f'List of your names:{PassengerDetails.passenger_count(s.passengers_name)}')
+    elif ch==8:
+        print(f'Main Works are: {Train.service()}')
+    else:
+        print("Invalid Choice")
+    
 
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
