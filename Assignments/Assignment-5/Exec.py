@@ -103,9 +103,11 @@ while True:
     elif ch == 2:
         if p:
             print(p.cancel_ticket(input('Enter the journey you booked: ')))
-    elif ch==4:
+    elif ch==3:
         if p:
             print(p.train_history())
+    elif ch==4:
+        print(f'Total money gain: {PassengerDetails.Tot_Ticket_Price_Booked(s.booked,170)}')
     elif ch == 5:
         train_name = input("Enter train name: ")
         t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
