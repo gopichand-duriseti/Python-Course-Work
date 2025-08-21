@@ -111,11 +111,12 @@ while True:
             train_name_c=input("Enter train name to cancel: ")
             jr = input('Enter the journey you booked: ')
             try:
-                # Refund calculated based on ticket price of booked class
+                # Refund calculated based on ticket price of booked class of Normal Train
                 if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
                     x=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
                     print(f'Total Refund(Normal Trains): {x}')
-            except Exception :
+            except :
+                # Refund calculated based on ticket price of booked class of EC Train
                 x1=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket_c(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
                 print(f'Total Refund(EC): {x1}')
             print(f'Total Refund Till now:{x+x1}')
