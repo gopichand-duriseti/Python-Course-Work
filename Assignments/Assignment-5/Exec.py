@@ -145,7 +145,7 @@ while True:
                   trains_available[train_name]['journeys'])
             print(t.get_details())
         except :
-            raise NameError("Invalid Train name")
+            print("Invalid Train name")
     # ------------------ EC TRAIN DETAILS ------------------
     elif ch == 6:
         EC_train_name = input("Enter EC Train name: ")
