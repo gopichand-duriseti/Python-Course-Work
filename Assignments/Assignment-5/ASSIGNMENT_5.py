@@ -98,6 +98,7 @@ class Status:
 class PassengerDetails:
     # Class-level list to keep track of ticket prices
     u = []
+    u1=[]
 
     def __init__(self, name=None, age=None, reservation_choice=None, train=None, status=None):
         self._name = name
@@ -137,7 +138,10 @@ class PassengerDetails:
     @classmethod
     def ticket(cls):
         return cls.u
-
+    
+    @classmethod
+    def ticket_c(cls):
+        return cls.u1
     # ----------------------------
     # STATIC METHODS
     # ----------------------------

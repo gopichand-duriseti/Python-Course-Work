@@ -39,10 +39,12 @@ s = Status()   # Shared Status object to track bookings/cancellations
 p = None       # Will store PassengerDetails object (last passenger reference for cancellation)
 l = []         # List to store names of passengers who booked normal trains
 l1 = []        # List to store names of passengers who booked EC trains
+x,x1=0,0
 
 # ----------------------- MENU LOOP -----------------------
 while True:
     # Display menu options
+    print()
     print('MENU:-',end='')
     print('''
 0: "Exit"      
@@ -93,7 +95,7 @@ while True:
             reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
 
             # Validation similar to normal trains
-            if name not in l and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in trains_available[train_name]['ticket_price']:
+            if name not in l1 and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in EC_trains_available[train_name]['ticket_price']:
                 e = ECTrain(train_name, EC_trains_available[train_name]['train_no'], EC_trains_available[train_name]['seats_available'])
                 p = PassengerDetails(name, age, reservation_choice, e, s)
                 print(p.book_tickets(journey))
@@ -106,14 +108,20 @@ while True:
     # ------------------ CANCELLATION ------------------
     elif ch == 2:
         if p:
+            train_name_c=input("Enter train name to cancel: ")
             jr = input('Enter the journey you booked: ')
-            if p.cancel_ticket(jr):
+            try:
                 # Refund calculated based on ticket price of booked class
-                print(f'Total Refund: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket_c(),trains_available[train_name]["ticket_price"][p.reservation_choice])}')
-            else:
-                print("No tickets booked to cancel")
+                if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
+                    x=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
+                    print(f'Total Refund(Normal Trains): {x}')
+            except Exception :
+                x1=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket_c(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
+                print(f'Total Refund(EC): {x1}')
+            print(f'Total Refund Till now:{x+x1}')
         else:
             print('No tickets cancelled')
+    
 
     # ------------------ VIEW TRANSACTION HISTORY ------------------
     elif ch == 3:
@@ -126,6 +134,8 @@ while True:
     elif ch == 4:
         if p.reservation_choice in trains_available[train_name]['ticket_price']:
             print(f'Total money Spent: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name]["ticket_price"][p.reservation_choice])}')
+        else:
+            print("Wrong input of reservation choice")
 
     # ------------------ TRAIN DETAILS ------------------
     elif ch == 5:
