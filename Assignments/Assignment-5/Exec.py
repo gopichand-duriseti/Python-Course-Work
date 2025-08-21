@@ -154,6 +154,27 @@ while True:
 
     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '''c=EVTrain("hello",123456,23,1000)
 print(c.get_details())
 print(c.service())
