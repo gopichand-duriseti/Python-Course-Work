@@ -139,11 +139,13 @@ while True:
 
     # ------------------ TRAIN DETAILS ------------------
     elif ch == 5:
-        train_name = input("Enter train name: ")
-        t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
+        try:
+            train_name = input("Enter train name: ")
+            t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
                   trains_available[train_name]['journeys'])
-        print(t.get_details())
-
+            print(t.get_details())
+        except :
+            raise NameError("Invalid Train name")
     # ------------------ EC TRAIN DETAILS ------------------
     elif ch == 6:
         EC_train_name = input("Enter EC Train name: ")
