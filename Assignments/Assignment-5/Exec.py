@@ -148,11 +148,13 @@ while True:
             print("Invalid Train name")
     # ------------------ EC TRAIN DETAILS ------------------
     elif ch == 6:
-        EC_train_name = input("Enter EC Train name: ")
-        e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
-                    EC_trains_available[EC_train_name]['journeys'])
-        print(e.get_details())
-
+        try:
+            EC_train_name = input("Enter EC Train name: ")
+            e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
+                        EC_trains_available[EC_train_name]['journeys'])
+            print(e.get_details())
+        except :
+            print("Invalid EC Train name")
     # ------------------ LIST OF NAMES ------------------
     elif ch == 7:
         print(f'List of your names:{PassengerDetails.passenger_count(s.passengers_name)}')
