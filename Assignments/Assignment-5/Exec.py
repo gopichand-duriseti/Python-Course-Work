@@ -2,35 +2,34 @@ from ASSIGNMENT_5 import *   # Importing all classes (Train, ECTrain, PassengerD
 
 # ----------------------- DATA SETUP -----------------------
 # List of normal train names
-train_names = ['hyderabad express', 'chennai superfast', 'delhi rajdhani', 'mumbai shatabdi',
-               'bangalore intercity', 'kolkata duronto', 'pune express', 'ahmedabad garib rath',
-               'lucknow mail', 'patna sampark kranti', 'secunderabad jan shatabdi',
-               'jaipur double decker', 'bhubaneswar express', 'trivandrum kerala express',
-               'goa mandovi express', 'varanasi express', 'nagpur duronto',
-               'mysore express', 'coimbatore intercity', 'guwahati express']
+train_names = [
+    '1.hyderabad express (hyd to mas)','2.chennai superfast (mas to sbc)'
+]
+
 
 # Dictionary storing details for each train (train_no, journeys, seats, ticket prices by class)
 trains_available = {
-    "hyderabad express": {"train_no": 17001, "journeys": "hyd to vskp", "seats_available": 120,
-                          "ticket_price": {"2S": 120, "SL": 180, "3A": 360, "2A": 540, "1A": 840}},
-    "chennai superfast": {"train_no": 12601, "journeys": "chennai to bangalore", "seats_available": 150,
-                          "ticket_price": {"2S": 100, "SL": 160, "3A": 340, "2A": 500, "1A": 800}}
+    1: {"name": "hyderabad express", "train_no": 17001, "journeys": "hyd to mas", "seats_available": 120,
+        "ticket_price": {"2S": 120, "SL": 180, "3A": 360, "2A": 540, "1A": 840}},
+    2: {"name": "chennai superfast", "train_no": 12601, "journeys": "mas to sbc", "seats_available": 150,
+        "ticket_price": {"2S": 100, "SL": 160, "3A": 340, "2A": 500, "1A": 800}}
 }
+
     # ... (other trains follow same structure)
 
 # List of ECTrain names
-EC_train_names = [
-    "vande bharat express", "amrit bharat express", "howrah rajdhani express", "mumbai rajdhani express",
-    "bhopal shatabdi express", "kalka shatabdi express", "sealdah duronto express", "mumbai duronto express"
+ec_train_names = [
+    "1.vande bharat express (ndls to bsb)","2.amrit bharat express (pnbe to ndls)"
 ]
 
 # Dictionary for ECTrains (same structure but larger seat capacity)
 EC_trains_available = {
-    "vande bharat express": {"train_no": 22435, "journeys": "ndls to bsb", "seats_available": 1128,
-                              "ticket_price": {"2S": 400, "SL": 600, "3A": 1200, "2A": 1800, "1A": 2800}},
-    "amrit bharat express": {"train_no": 22436, "journeys": "ndls to bpl", "seats_available": 980,
-                              "ticket_price": {"2S": 380, "SL": 560, "3A": 1100, "2A": 1700, "1A": 2600}}
+    1: {"name": "vande bharat express", "train_no": 22435, "journeys": "ndls to bsb", "seats_available": 1128,
+        "ticket_price": {"2S": 400, "SL": 600, "3A": 1200, "2A": 1800, "1A": 2800}},
+    2: {"name": "amrit bharat express", "train_no": 22436, "journeys": "pnbe to ndls", "seats_available": 980,
+        "ticket_price": {"2S": 380, "SL": 560, "3A": 1100, "2A": 1700, "1A": 2600}}
 }
+
 
     # ... (other EC trains follow)
 
@@ -57,6 +56,8 @@ while True:
 7: "List of your names used during booking"
 8: "Main Services Provided"          
 ''')
+    print(f'train_names:{train_names}')
+    print(f'EC_train_names:{ec_train_names}')
 
     ch = int(input("Enter your choice: "))   # User input
     if ch == 0:
@@ -64,39 +65,39 @@ while True:
 
     # ------------------ BOOKING ------------------
     elif ch == 1:
-        train_name = input("Enter train name: ").lower()
-        journey = input("Enter journey (eg:- hyd to vskp): ").lower()
+        train_name_ch = int(input("select number for train from details give above: "))
+        journey = input("Enter journey (eg:- hyd to vskp) related to the selected train: ").lower()
 
         # Booking for Normal Trains
-        if (train_name in train_names and journey in trains_available[train_name]['journeys'] and
-            trains_available[train_name]['seats_available'] > 0):
+        if (trains_available[train_name_ch]['name'] in train_names[train_name_ch-1] and journey in trains_available[train_name_ch]['journeys'] and
+            trains_available[train_name_ch]['seats_available'] > 0):
 
             name = input("Enter your name: ")
             age = int(input("Enter your age: "))
             reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
 
             # Validation: name should be unique, only letters/spaces, reservation choice valid
-            if name not in l and all(i.isalpha() or i.isspace() for i in name) and reservation_choice in trains_available[train_name]['ticket_price']:
-                t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'])
+            if name not in l and all(i.isalpha() or i.isspace() for i in name) and reservation_choice in trains_available[train_name_ch]['ticket_price']:
+                t = Train(trains_available[train_name_ch]['name'], trains_available[train_name_ch]['train_no'], trains_available[train_name_ch]['seats_available'])
                 p = PassengerDetails(name, age, reservation_choice, t, s)
                 print(p.book_tickets(journey))   # Book ticket and print status
                 # Update seat availability in dictionary
-                trains_available[train_name]['seats_available'] = t.seats_avail
+                trains_available[train_name_ch]['seats_available'] = t.seats_avail
             else:
                 print("Invalid/Repetitive Input of Name/Reservation Choice")
             l.append(name)
 
         # Booking for EC Trains
-        elif (train_name in EC_train_names and journey in EC_trains_available[train_name]['journeys'] and
-              EC_trains_available[train_name]['seats_available'] > 0):
+        elif (EC_trains_available[train_name_ch]['name'] in ec_train_names[train_name_ch-1] and journey in EC_trains_available[train_name_ch]['journeys'] and
+              EC_trains_available[train_name_ch]['seats_available'] > 0):
 
             name = input("Enter your name: ")
             age = int(input("Enter your age: "))
             reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
 
             # Validation similar to normal trains
-            if name not in l1 and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in EC_trains_available[train_name]['ticket_price']:
-                e = ECTrain(train_name, EC_trains_available[train_name]['train_no'], EC_trains_available[train_name]['seats_available'])
+            if name not in l1 and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in EC_trains_available[train_name_ch]['ticket_price']:
+                e = ECTrain(EC_trains_available[train_name_ch]['name'], EC_trains_available[train_name_ch]['train_no'], EC_trains_available[train_name_ch]['seats_available'])
                 p = PassengerDetails(name, age, reservation_choice, e, s)
                 print(p.book_tickets(journey))
                 # Update seat availability
@@ -108,7 +109,7 @@ while True:
     # ------------------ CANCELLATION ------------------
     elif ch == 2:
         if p:
-            train_name_c=input("Enter train name to cancel: ")
+            train_name_c=int(input("select Number for train/EC train from details give above to cancel: "))
             jr = input('Enter the journey you booked: ')
             try:
                 # Refund calculated based on ticket price of booked class of Normal Train
@@ -133,16 +134,19 @@ while True:
 
     # ------------------ TOTAL MONEY SPENT ------------------
     elif ch == 4:
-        if p.reservation_choice in trains_available[train_name]['ticket_price']:
-            print(f'Total money Spent: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name]["ticket_price"][p.reservation_choice])}')
+        if p:
+            if p.reservation_choice in trains_available[train_name_ch]['ticket_price']:
+                print(f'Total money Spent: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_ch]["ticket_price"][p.reservation_choice])}')
+            else:
+                print("Wrong input of reservation choice")
         else:
-            print("Wrong input of reservation choice")
+            print("You haven't spent/You got the money you spent")
 
     # ------------------ TRAIN DETAILS ------------------
     elif ch == 5:
         try:
-            train_name = input("Enter train name: ")
-            t = Train(train_name, trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
+            train_name = int(input("Enter given choice get the details of train: "))
+            t = Train(trains_available[train_name]['name'], trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
                   trains_available[train_name]['journeys'])
             print(t.get_details())
         except :
@@ -150,8 +154,8 @@ while True:
     # ------------------ EC TRAIN DETAILS ------------------
     elif ch == 6:
         try:
-            EC_train_name = input("Enter EC Train name: ")
-            e = ECTrain(EC_train_name, EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
+            EC_train_name = int(input("Enter given choice get te details of EC train: "))
+            e = ECTrain(EC_trains_available[EC_train_name]['name'], EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
                         EC_trains_available[EC_train_name]['journeys'])
             print(e.get_details())
         except :
