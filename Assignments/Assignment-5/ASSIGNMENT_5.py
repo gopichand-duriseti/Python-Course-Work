@@ -113,7 +113,8 @@ class PassengerDetails:
             self.status.history['booked'].append(ticket_bought)     # update history
             return f'Booked tickets: {self.status.booked}'
         else:
-            return "No seats left for this Train"
+            return
+            "No seats left for this Train"
 
     # String representation of passenger object
     def __str__(self):
