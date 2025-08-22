@@ -61,3 +61,17 @@ print(number1) #10
 #number3=number(30)
 #print(number1+number2) #before adding add constructor #adding two variables #Typeerror:unsupported operand type(s) for +: 'number' and 'number'
 print(number1+number2) #30
+
+
+class number:
+    def __init__(self,n):
+        self.n=n
+    def __sub__(self,other):
+        return number(self.n-other.n)
+    def __str__(self):
+        return f"{self.n}"
+n=number(5)
+n1=number(10)
+n2=number(15)
+n3=number(20)
+print(n-n1-n2-n3) #-40
