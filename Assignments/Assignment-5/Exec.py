@@ -1,4 +1,4 @@
-from ASSIGNMENT_5 import *   # Importing all classes (Train, ECTrain, PassengerDetails, Status, etc.)
+from expe_5 import *   # Importing all classes (Train, ECTrain, PassengerDetails, Status, etc.)
 
 # ----------------------- DATA SETUP -----------------------
 # List of normal train names
@@ -36,10 +36,10 @@ EC_trains_available = {
 # ----------------------- INITIALIZATION -----------------------
 s = Status()   # Shared Status object to track bookings/cancellations
 p = None       # Will store PassengerDetails object (last passenger reference for cancellation)
-l = []         # List to store names of passengers who booked normal trains
-l1 = []        # List to store names of passengers who booked EC trains
+l = []         # List to store names of passengers who booked trains
 x,x1=0,0
-
+x_a=[]
+a,b=0,0
 # ----------------------- MENU LOOP -----------------------
 while True:
     # Display menu options
@@ -49,12 +49,13 @@ while True:
 0: "Exit"      
 1: "Booking"
 2: "Cancelling and Refund Information"
-3: "View Transactions"
+3: "View History"
 4: "Total Money Spent"
 5: "Train Details"
 6: "ECTrain Details"
 7: "List of your names used during booking"
-8: "Main Services Provided"          
+8: "Main Services Provided"     
+9: "Total Money after booking and cancelling ticket"               
 ''')
     print(f'train_names:{train_names}')
     print(f'EC_train_names:{ec_train_names}')
@@ -65,8 +66,8 @@ while True:
 
     # ------------------ BOOKING ------------------
     elif ch == 1:
-        train_name_ch = int(input("select number for train from details give above: "))
-        journey = input("Enter journey (eg:- hyd to vskp) related to the selected train: ").lower()
+        train_name_ch = int(input("select number for train from details given above: "))
+        journey = input("Enter journey (eg:- hyd to mas) related to the selected train: ").lower()
 
         # Booking for Normal Trains
         if (trains_available[train_name_ch]['name'] in train_names[train_name_ch-1] and journey in trains_available[train_name_ch]['journeys'] and
@@ -83,6 +84,7 @@ while True:
                 print(p.book_tickets(journey))   # Book ticket and print status
                 # Update seat availability in dictionary
                 trains_available[train_name_ch]['seats_available'] = t.seats_avail
+                a=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_ch]["ticket_price"][p.reservation_choice])
             else:
                 print("Invalid/Repetitive Input of Name/Reservation Choice")
             l.append(name)
@@ -96,31 +98,31 @@ while True:
             reservation_choice = input("Enter your reservation choice(2S/SL/1A/2A/3A): ")
 
             # Validation similar to normal trains
-            if name not in l1 and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in EC_trains_available[train_name_ch]['ticket_price']:
+            if name not in l and all(ch.isalpha() or ch.isspace() for ch in name) and reservation_choice in EC_trains_available[train_name_ch]['ticket_price']:
                 e = ECTrain(EC_trains_available[train_name_ch]['name'], EC_trains_available[train_name_ch]['train_no'], EC_trains_available[train_name_ch]['seats_available'])
                 p = PassengerDetails(name, age, reservation_choice, e, s)
                 print(p.book_tickets(journey))
                 # Update seat availability
-                EC_trains_available[train_name]['seats_available'] = e.seats_avail
+                EC_trains_available[train_name_ch]['seats_available'] = e.seats_avail
+                b=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),EC_trains_available[train_name_ch]["ticket_price"][p.reservation_choice])
             else:
-                print("Invalid input of name/reservation choice")
-            l1.append(name)
+                print("Invalid/Repetitive Input of Name/Reservation Choice")
+            l.append(name)
 
     # ------------------ CANCELLATION ------------------
     elif ch == 2:
         if p:
             train_name_c=int(input("select Number for train/EC train from details give above to cancel: "))
             jr = input('Enter the journey you booked: ')
-            try:
-                # Refund calculated based on ticket price of booked class of Normal Train
-                if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
-                    x=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                    print(f'Total Refund(Normal Trains): {x}')
-            except :
-                # Refund calculated based on ticket price of booked class of EC Train
-                x1=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket_c(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                print(f'Total Refund(EC): {x1}')
-            print(f'Total Refund Till now:{x+x1}')
+            # Refund calculated based on ticket price of booked class of Normal Train
+            if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
+                x=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
+                print(f'Total Refund(Normal Trains): {abs(x)}')
+            else:
+                x1=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
+                print(f'Total Refund(EC): {abs(x1)}')
+            print(f'Total Refund Till now: {abs(x+x1)}')
+            x_a.append(abs(x+x1))
         else:
             print('No tickets cancelled')
     
@@ -135,26 +137,24 @@ while True:
     # ------------------ TOTAL MONEY SPENT ------------------
     elif ch == 4:
         if p:
-            if p.reservation_choice in trains_available[train_name_ch]['ticket_price']:
-                print(f'Total money Spent: {PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),trains_available[train_name_ch]["ticket_price"][p.reservation_choice])}')
-            else:
-                print("Wrong input of reservation choice")
+            tot=a+b
+            print(tot)
         else:
-            print("You haven't spent/You got the money you spent")
+            print("You haven't spent/You got the money you spent through refund policy")
 
     # ------------------ TRAIN DETAILS ------------------
     elif ch == 5:
         try:
-            train_name = int(input("Enter given choice get the details of train: "))
-            t = Train(trains_available[train_name]['name'], trains_available[train_name]['train_no'], trains_available[train_name]['seats_available'],
-                  trains_available[train_name]['journeys'])
+            train_name_no = int(input("Enter given choice get the details of train: "))
+            t = Train(trains_available[train_name_no]['name'], trains_available[train_name_no]['train_no'], trains_available[train_name_no]['seats_available'],
+                  trains_available[train_name_no]['journeys'])
             print(t.get_details())
         except :
             print("Invalid Train name")
     # ------------------ EC TRAIN DETAILS ------------------
     elif ch == 6:
         try:
-            EC_train_name = int(input("Enter given choice get te details of EC train: "))
+            EC_train_name= int(input("Enter given choice get te details of EC train: "))
             e = ECTrain(EC_trains_available[EC_train_name]['name'], EC_trains_available[EC_train_name]['train_no'], EC_trains_available[EC_train_name]['seats_available'],
                         EC_trains_available[EC_train_name]['journeys'])
             print(e.get_details())
@@ -166,43 +166,10 @@ while True:
 
     # ------------------ MAIN SERVICES ------------------
     elif ch == 8:
-        print(f'Main Works are: {Train.service()}')
+        print(f'Main Services Provided are: {Train.service()}')
+    # ------------------ TOTAL MONEY AFTER BOOKING AND CANCELLING
+    elif ch==9:
+        print(f'Total Money after booking and cancelling:{PassengerDetails.difference(tot-sum(x_a))}')
 
     else:
         print("Invalid Choice")
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''c=EVTrain("hello",123456,23,1000)
-print(c.get_details())
-print(c.service())
-p=PassengerDetails('gopi',23,'2s',t)
-print(p.book_tickets('Hyd-Vij'))
-print(p.book_tickets('Hy-Vij'))
-print(p.cancel_ticket('Hyd-Vij'))
-print(p.passenger_count(p.status.passengers_name))
-tot_amt=p.Tot_Ticket_Price_Booked(p.status.booked,167)
-tot_amt_canc=p.Tot_Ticket_Price_Booked(p.status.cancelled,167)
-print(f'Total amount after booking and cancellation:{tot_amt-tot_amt_canc}')
-'''

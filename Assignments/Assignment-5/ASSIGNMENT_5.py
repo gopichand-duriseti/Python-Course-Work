@@ -10,7 +10,6 @@
 
 # Printing the IRCTC banner
 print("IRCTC".center(100, "-"))
-print()
 
 # Importing Abstract Base Class (ABC) and abstractmethod for abstraction
 from abc import ABC, abstractmethod
@@ -97,9 +96,7 @@ class Status:
 # ----------------------------
 class PassengerDetails:
     # Class-level list to keep track of ticket prices
-    u = []
-    u1=[]
-
+    u=0
     def __init__(self, name=None, age=None, reservation_choice=None, train=None, status=None):
         self._name = name
         self.age = age
@@ -125,8 +122,10 @@ class PassengerDetails:
     # Cancel tickets
     def cancel_ticket(self, ticket_to_cancel):
         if ticket_to_cancel in self.status.booked:
+            self.status.booked.remove(ticket_to_cancel)
             self.status.cancelled.append(ticket_to_cancel)              # add to cancelled
             self.train.seats_avail += 1                                 # increase seat count
+            self.status.history['booked'].remove(ticket_to_cancel)         
             self.status.history['cancelled'].append(ticket_to_cancel)   # update history
             return f'Cancelled tickets are {self.status.cancelled}'
 
@@ -138,10 +137,7 @@ class PassengerDetails:
     @classmethod
     def ticket(cls):
         return cls.u
-    
-    @classmethod
-    def ticket_c(cls):
-        return cls.u1
+
     # ----------------------------
     # STATIC METHODS
     # ----------------------------
@@ -149,10 +145,19 @@ class PassengerDetails:
     # Calculate total ticket price
     @staticmethod
     def Tot_Ticket_Price_Booked(s, amt):
-        s.append(amt)
-        return sum(s)
+        s+=amt
+        return s
+    @staticmethod
+    def Tot_Ticket_Price_Cancelled(s,amt):
+        s-=amt
+        return s
+
 
     # Count total passengers
     @staticmethod
     def passenger_count(count_pas):
-        return len(count_pas)
+        return count_pas
+    
+    @staticmethod
+    def difference(s):
+        return s
