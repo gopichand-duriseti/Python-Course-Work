@@ -162,7 +162,7 @@ while True:
             print("Invalid EC Train name")
     # ------------------ LIST OF NAMES ------------------
     elif ch == 7:
-        print(f'List of your names:{PassengerDetails.passenger_count(s.passengers_name)}')
+        print(f'List of your names:{PassengerDetails.passenger_names(s.passengers_name)}')
 
     # ------------------ MAIN SERVICES ------------------
     elif ch == 8:

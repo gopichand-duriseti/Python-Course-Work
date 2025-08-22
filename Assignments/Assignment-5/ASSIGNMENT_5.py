@@ -155,8 +155,8 @@ class PassengerDetails:
 
     # Count total passengers
     @staticmethod
-    def passenger_count(count_pas):
-        return count_pas
+    def passenger_names(names):
+        return names
     
     @staticmethod
     def difference(s):
