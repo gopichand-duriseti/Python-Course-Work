@@ -55,9 +55,10 @@ __eq__(self,other)
 '''
 number1=number(10)
 number2=number(20)
+     #OR
 '''print(number1) #<__main__.number object at 0x000002586A5B6CF0>
 after using __str__ constructor you can get the value'''
-print(number1) #10 
+#10 
 #number3=number(30)
 #print(number1+number2) #before adding add constructor #adding two variables #Typeerror:unsupported operand type(s) for +: 'number' and 'number'
 print(number1+number2) #30
