@@ -41,6 +41,6 @@ print(b.noresbalance) #8000
 
 print(b.name)
 b.name='abc'
-print(b.name)
+print(b.name) #abc
 
 
