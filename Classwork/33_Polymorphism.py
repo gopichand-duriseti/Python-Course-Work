@@ -61,7 +61,7 @@ after using __str__ constructor you can get the value'''
 #10 
 #number3=number(30)
 #print(number1+number2) #before adding add constructor #adding two variables #Typeerror:unsupported operand type(s) for +: 'number' and 'number'
-print(number1+number2) #30
+print(number1+number2)#30
 
 
 class number:
