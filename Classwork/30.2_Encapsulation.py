@@ -24,16 +24,16 @@ print(mukesh.setpassword("MukeshBabu@70"))
 class Bank:
     def __init__(self):
         self.name='xyz'
-        self._balance=0
+        self.__balance=0
     @property
     def noresbalance(self):
-        return self._balance
+        return self.__balance
     @noresbalance.setter
     def noresbalance(self,amount):
-        self._balance+=amount
+        self.__balance+=amount
 
 b=Bank()
-print(b.noresbalance)
+print(b.noresbalance) #0
 b.noresbalance=3000
 print(b.noresbalance) #3000
 b.noresbalance=5000
