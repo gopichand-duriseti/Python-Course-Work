@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-class Content(ABC):
+class Content(ABC): #It sets the rules to follow 
     @abstractmethod
     def upload(self):
         pass
@@ -22,5 +22,8 @@ class Reel(Content):
         print("Uploading reel...")
         print("Reel uploaded successfully!")
 contents = [Photo(), Video(), Reel()]
+Photo().upload()
+print()
 for content in contents:
     content.upload()
+    print()
