@@ -38,21 +38,18 @@ class Account:
         self.account_holder=account_holder
         self.__pin=pin
         self._balance=balance
-    def get(self):
-        return self.__pin
-    def set(self,new):
-        self.__pin=new
     def deposit(self,amt):
         self._balance+=amt
         return f'Deposited:${amt}'
     def withdraw(self,pin,amt):
-        self._balance-=amt
-        return f'Withdrawn:${amt}'
+        if self.__pin==pin:
+            self._balance-=amt
+            return f'Withdrawn:${amt}'
     def show_balance(self):
         return self._balance
 acc=Account('Ravi',1234)
 print(acc.deposit(5000))
-print(acc.withdraw(acc.get(),1500))
+print(acc.withdraw(1234,1500))
 print(acc.show_balance())
 
 #Q4)
@@ -93,15 +90,12 @@ class Shape:
     def area(self):
         pass
 class Square(Shape):
-    def __init__(self,side):
-        self.side=side
     def area(self):
-        return self.side*self.side
+        return self.val*self.val
+
 class Circle(Shape):
-    def __init__(self,radius):
-        self.radius=radius
     def area(self):
-        return math.pi*self.radius*self.radius
+        return math.pi*self.val*self.val
 s=Square(4)
 c=Circle(3)
 print(s.area())
