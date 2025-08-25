@@ -1,25 +1,30 @@
 #Q1)
-class Student:
-    tot=2
-    def __init__(self,name,age):
-        self.name=name
-        self.age=age
-    def display(self):
-        return f'Name:{self.name},Age:{self.age}'
+class Students:
+    total_students = 0   # Class variable shared by all objects
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Students.total_students += 1   # Increment whenever a new object is created
     @classmethod
     def get_total_students(cls):
-        return cls.tot
+        print(f"Total Students: {cls.total_students}")
+    def display(self):
+        return f'Name:{self.name},Age:{self.age}'
     @staticmethod
     def is_eligible(age):
         if 18<age<30:
             return True
         else:
             return False
-s1=Student("Arun",20)
-s2=Student('Meena',17)
+# Creating students
+s1 = Students("Arun", 20)
+s2 = Students("Kiran", 22)
+s3 = Students("Mohan", 19)
 print(s1.display())
-print(Student.get_total_students())
-print(Student.is_eligible(15))
+print(Students.is_eligible(25))
+# Check total students
+Students.get_total_students()
 
 #Q2)
 class Book:
