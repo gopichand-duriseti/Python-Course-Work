@@ -43,7 +43,8 @@ def run_assistant():
             now=datetime.datetime.now().strftime("%I:%M %p")
             speak(f'The present time is {now}')
         elif 'date of birth' in command:
-            speak(f'Your DOB is 23rd February 2001')
+            speak('Your Date of Birth is 23rd February 2001')
+            break
         elif 'your name' in command:
             speak("I'm your python assistant")
 run_assistant()     
