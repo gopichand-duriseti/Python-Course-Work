@@ -2,37 +2,41 @@ import os
 import re
 
 # Define positive and negative word lists for movie reviews
+# Positive Food Review Words
 POSITIVE_WORDS = {
-    "amazing", "awesome", "brilliant", "captivating", "delightful",
-    "enjoyable", "excellent", "fantastic", "fascinating", "good",
-    "great", "impressive", "inspiring", "legendary", "lovable",
-    "masterful", "mind-blowing", "outstanding", "powerful", "remarkable",
-    "spectacular", "stunning", "superb", "thrilling", "unforgettable", "wonderful"
+    "flavorful", "crispy", "fresh", "creamy", "rich",
+    "buttery", "soft", "satisfying", "authentic", "colorful",
+    "warm", "refreshing", "balanced", "heavenly", "delightful",
+    "tasty", "crunchy", "aromatic", "juicy", "perfect",
+    "smooth", "appetizing", "wholesome", "generous", "delicious"
 }
 
+# Negative Food Review Words
 NEGATIVE_WORDS = {
-    "awful", "bad", "boring", "confusing", "disappointing", "dull",
-    "exaggerated", "flat", "forgettable", "horrible", "lame",
-    "mediocre", "messy", "overhyped", "pathetic", "predictable",
-    "ridiculous", "slow", "terrible", "trash", "unconvincing", "weak", "worst"
+    "soggy", "bland", "watery", "artificial", "disappointing",
+    "overpriced", "undercooked", "stale", "greasy", "burnt",
+    "salty", "cold", "boring", "tasteless", "chewy",
+    "oily", "bitter", "unseasoned", "raw", "spoiled",
+    "overcooked", "small", "flavorless", "messy", "dull"
 }
+
 
 # Directory where movie reviews are stored
-moviereviews_dir = "Assignments/Foods_related_notes/Foodreviews"
-print("Looking for reviews in:", os.path.abspath(moviereviews_dir))
+foodreviews_dir = "Assignments/Foods_related_notes/Foodreviews"
+print("Looking for reviews in:", os.path.abspath(foodreviews_dir))
 
 # Ensure the directory exists
-os.makedirs(moviereviews_dir, exist_ok=True)
-'''
-def sanitize_filename(filename):
-    """Clean filename: strip spaces and ensure .txt extension."""
+os.makedirs(foodreviews_dir, exist_ok=True)
+
+"""Clean filename: strip spaces and ensure .txt extension."""
+def text_filename(filename):
     filename = filename.strip()
     if not filename.endswith(".txt"):
         filename += ".txt"
     return filename
 
+"""Analyze review content and determine if it has a positive or negative vibe."""
 def analyze_sentiment(content):
-    """Analyze review content and determine if it has a positive or negative vibe."""
     positive_count = len(re.findall(r'\b(?:' + '|'.join(POSITIVE_WORDS) + r')\b', content, re.IGNORECASE))
     negative_count = len(re.findall(r'\b(?:' + '|'.join(NEGATIVE_WORDS) + r')\b', content, re.IGNORECASE))
 
@@ -43,14 +47,14 @@ def analyze_sentiment(content):
     else:
         return "Neutral"
 
+"""Read and analyze a specific review or all reviews."""
 def read_and_analyze_note():
-    """Read and analyze a specific review or all reviews."""
     choice = input("Do you want to analyze:\n1. A specific review\n2. All reviews\nEnter your choice: ").strip()
 
     if choice == "1":
         filename = input("Enter the file name: ")
-        filename = sanitize_filename(filename)
-        file_path = os.path.join(moviereviews_dir, filename)
+        filename = text_filename(filename)
+        file_path = os.path.join(foodreviews_dir, filename)
 
         try:
             with open(file_path, "r", encoding="utf-8") as file:
@@ -58,20 +62,20 @@ def read_and_analyze_note():
                 sentiment = analyze_sentiment(content)
                 print(f"\nAnalyzing file: {filename}\nDetected Sentiment: {sentiment}\n")
         except FileNotFoundError:
-            print(f"Error: File '{filename}' not found in {moviereviews_dir}.")
+            print(f"Error: File '{filename}' not found in {foodreviews_dir}.")
         except Exception as e:
             print(f"Error: {e}")
 
     elif choice == "2":
         sentiment_counts = {"Positive": 0, "Negative": 0, "Neutral": 0}
-        files = os.listdir(moviereviews_dir)
+        files = os.listdir(foodreviews_dir)
 
         if not files:
             print("No reviews found.")
             return
 
         for filename in files:
-            file_path = os.path.join(moviereviews_dir, filename)
+            file_path = os.path.join(foodreviews_dir, filename)
             with open(file_path, "r", encoding="utf-8") as file:
                 content = file.read()
                 sentiment = analyze_sentiment(content)
@@ -81,32 +85,31 @@ def read_and_analyze_note():
         for sentiment, count in sentiment_counts.items():
             print(f"{sentiment}: {count} reviews")
 
+"""Create a new review note."""
 def create_note():
-    """Create a new review note."""
     filename = input("Enter the name of the new review: ")
-    filename = sanitize_filename(filename)
-    file_path = os.path.join(moviereviews_dir, filename)
+    filename = text_filename(filename)
+    file_path = os.path.join(foodreviews_dir, filename)
 
     content = input("Enter your review content:\n")
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(content)
-
+    print()
     print(f"Review '{filename}' saved successfully.")
-
+"""Modify an existing review note."""
 def modify_note():
-    """Modify an existing review note."""
-    files = os.listdir(moviereviews_dir)
+    files = os.listdir(foodreviews_dir)
     if not files:
         print("No reviews available to modify.")
         return
 
-    print("Existing reviews:", ", ".join(files))
+    print("Existing reviews:",files)
     filename = input("Enter the file name to modify: ")
-    filename = sanitize_filename(filename)
-    file_path = os.path.join(moviereviews_dir, filename)
+    filename = text_filename(filename)
+    file_path = os.path.join(foodreviews_dir, filename)
 
     if not os.path.exists(file_path):
-        print(f"Error: File '{filename}' not found in {moviereviews_dir}.")
+        print(f"Error: File '{filename}' not found in {foodreviews_dir}.")
         return
 
     new_content = input("Enter new content:\n")
@@ -115,10 +118,10 @@ def modify_note():
 
     print(f"Review '{filename}' updated successfully.")
 
+"""Main function to run the Movie Review Notes Management System."""
 def main():
-    """Main function to run the Movie Review Notes Management System."""
     while True:
-        print("\n🎬 Intelligent Movie Review Notes Management System")
+        print("\n🎬 Intelligent Food Review Notes Management System")
         print("1. Read & Analyze Reviews")
         print("2. Create a New Review")
         print("3. Modify an Existing Review")
@@ -139,4 +142,4 @@ def main():
             print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
-    main()'''
+    main()
