@@ -51,5 +51,3 @@ def send_bulk_email(csv_file,subject,body):
                     send_email(email,subject,body)
     except Exception as e:
         print(f'Error reading file:{e}')
-
-#send_email("gopiduriseti@gmail.com","Automation Program","Good Morning Everyone")
