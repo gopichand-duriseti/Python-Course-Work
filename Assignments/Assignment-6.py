@@ -138,7 +138,7 @@ def main():
         elif choice == "3":
             modify_note()
         elif choice == "4":
-            print("Exiting program. Goodbye! 👋")
+            print("Exiting....")
             break
         else:
             print("Invalid choice. Please try again.")
