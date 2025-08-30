@@ -117,10 +117,10 @@ while True:
             # Refund calculated based on ticket price of booked class of Normal Train
             if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
                 x=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                print(f'Total Refund(Normal Trains): {abs(x)}')
+                print(f'Total Refund(Normal Trains): {x}')
             else:
                 x1=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                print(f'Total Refund(EC): {abs(x1)}')
+                print(f'Total Refund(EC): {x1}')
             print(f'Total Refund Till now: {abs(x+x1)}')
             x_a.append(abs(x+x1))
         else:
