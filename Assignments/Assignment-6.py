@@ -1,7 +1,7 @@
 import os
 import re
 
-# Define positive and negative word lists for movie reviews
+
 # Positive Food Review Words
 POSITIVE_WORDS = {
     "flavorful", "crispy", "fresh", "creamy", "rich",
@@ -21,21 +21,22 @@ NEGATIVE_WORDS = {
 }
 
 
-# Directory where movie reviews are stored
+# Directory where Food reviews are stored
 foodreviews_dir = "Assignments/Foods_related_notes/Foodreviews"
+
 print("Looking for reviews in:", os.path.abspath(foodreviews_dir))
 
 # Ensure the directory exists
 os.makedirs(foodreviews_dir, exist_ok=True)
 
-"""Clean filename: strip spaces and ensure .txt extension."""
+#Clean filename: strip spaces and ensure .txt extension.
 def text_filename(filename):
     filename = filename.strip()
     if not filename.endswith(".txt"):
         filename += ".txt"
     return filename
 
-"""Analyze review content and determine if it has a positive or negative vibe."""
+#Analyze review content and determine if it has a positive or negative vibe.
 def analyze_sentiment(content):
     positive_count = len(re.findall(r'\b(?:' + '|'.join(POSITIVE_WORDS) + r')\b', content, re.IGNORECASE))
     negative_count = len(re.findall(r'\b(?:' + '|'.join(NEGATIVE_WORDS) + r')\b', content, re.IGNORECASE))
@@ -47,7 +48,7 @@ def analyze_sentiment(content):
     else:
         return "Neutral"
 
-"""Read and analyze a specific review or all reviews."""
+#Read and analyze a specific review or all reviews.
 def read_and_analyze_note():
     choice = input("Do you want to analyze:\n1. A specific review\n2. All reviews\nEnter your choice: ").strip()
 
@@ -85,7 +86,7 @@ def read_and_analyze_note():
         for sentiment, count in sentiment_counts.items():
             print(f"{sentiment}: {count} reviews")
 
-"""Create a new review note."""
+#Create a new review note.
 def create_note():
     filename = input("Enter the name of the new review: ")
     filename = text_filename(filename)
@@ -96,7 +97,8 @@ def create_note():
         file.write(content)
     print()
     print(f"Review '{filename}' saved successfully.")
-"""Modify an existing review note."""
+
+#Modify an existing review note.
 def modify_note():
     files = os.listdir(foodreviews_dir)
     if not files:
@@ -118,7 +120,7 @@ def modify_note():
 
     print(f"Review '{filename}' updated successfully.")
 
-"""Main function to run the Movie Review Notes Management System."""
+#Main function to run the Movie Review Notes Management System.
 def main():
     while True:
         print("\n🎬 Intelligent Food Review Notes Management System")
