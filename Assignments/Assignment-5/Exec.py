@@ -173,7 +173,7 @@ while True:
         print(f'Main Services Provided are: {Train.service()}')
     # ------------------ TOTAL MONEY AFTER BOOKING AND CANCELLING
     elif ch==9:
-        print(f'Total Money after booking and cancelling:{PassengerDetails.difference(tot-sum(x_a))}')
+        print(f'Total Money after booking and cancelling:{PassengerDetails.difference((a+b)-sum(x_a))}')
 
     else:
         print("Invalid Choice")
