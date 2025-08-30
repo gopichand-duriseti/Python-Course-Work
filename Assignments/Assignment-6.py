@@ -50,7 +50,7 @@ def analyze_sentiment(content):
 
 #Read and analyze a specific review or all reviews.
 def read_and_analyze_note():
-    choice = input("Do you want to analyze:\n1. A specific review\n2. All reviews\nEnter your choice: ").strip()
+    choice = input("Do you want to analyze:\n1. A specific recipe review\n2. All recipes reviews\nEnter your choice: ").strip()
 
     if choice == "1":
         filename = input("Enter the file name: ")
