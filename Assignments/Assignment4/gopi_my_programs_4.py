@@ -118,7 +118,6 @@ table_squares([11,13,19,32])
 361
 1024
 Explaination:
-ChatGPT said:
 This function loops through each number in the list l and calculates its square using i**2.
 It then prints the number and its square in the format number:square using an f-string.''')
 
