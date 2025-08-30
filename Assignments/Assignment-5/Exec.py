@@ -105,6 +105,7 @@ while True:
                 # Update seat availability
                 EC_trains_available[train_name_ch]['seats_available'] = e.seats_avail
                 b=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),EC_trains_available[train_name_ch]["ticket_price"][p.reservation_choice])
+                print(a,b)
             else:
                 print("Invalid/Repetitive Input of Name/Reservation Choice")
             l.append(name)
@@ -117,10 +118,10 @@ while True:
             # Refund calculated based on ticket price of booked class of Normal Train
             if p.cancel_ticket(jr) and jr in trains_available[train_name_c]['journeys']:
                 x=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                print(f'Total Refund(Normal Trains): {x}')
+                print(f'Total Refund(Normal Trains): {abs(x)}')
             else:
                 x1=PassengerDetails.Tot_Ticket_Price_Cancelled(PassengerDetails.ticket(),EC_trains_available[train_name_c]["ticket_price"][p.reservation_choice])
-                print(f'Total Refund(EC): {x1}')
+                print(f'Total Refund(EC): {abs(x1)}')
             print(f'Total Refund Till now: {abs(x+x1)}')
             x_a.append(abs(x+x1))
         else:
@@ -162,7 +163,11 @@ while True:
             print("Invalid EC Train name")
     # ------------------ LIST OF NAMES ------------------
     elif ch == 7:
-        print(f'List of your names:{PassengerDetails.passenger_names(s.passengers_name)}')
+        l_n=PassengerDetails.passenger_names(s.passengers_name)
+        if l_n:
+            print(f'List of your names:{l_n}')
+        else:
+            print("No Names saved.")
 
     # ------------------ MAIN SERVICES ------------------
     elif ch == 8:
