@@ -105,7 +105,6 @@ while True:
                 # Update seat availability
                 EC_trains_available[train_name_ch]['seats_available'] = e.seats_avail
                 b=PassengerDetails.Tot_Ticket_Price_Booked(PassengerDetails.ticket(),EC_trains_available[train_name_ch]["ticket_price"][p.reservation_choice])
-                print(a,b)
             else:
                 print("Invalid/Repetitive Input of Name/Reservation Choice")
             l.append(name)
