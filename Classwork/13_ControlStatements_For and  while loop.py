@@ -1,6 +1,6 @@
 name='gopi'
 for ch in name:
-    print('ch','=',ch)
+    print('ch',' = ',ch)
 l=['sanjay','revanth','gopi','gopal']
 for name in l:
     print('name','=',name)
