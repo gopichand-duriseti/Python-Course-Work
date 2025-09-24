@@ -78,3 +78,13 @@ os.rmdir("new_folder") # Removes an empty directory
 #Removing a Non-Empty Directory
 import shutil
 shutil.rmtree("parent_folder") # Deletes folder and all its contents
+
+f=open("example.txt",mode='r')
+wr=open("reverse.txt",'w+')
+
+for lines in f.readlines():
+    lines=lines.strip()
+    lines=lines[::-1]
+    wr.write(lines)
+    wr.write('\n')
+

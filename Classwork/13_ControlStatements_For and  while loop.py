@@ -31,7 +31,7 @@ while max_attempt>=cur_attempt:
 else:
     print("You have no Attempts left")
     
-                    '''OR'''
+'''OR'''
 
 email,pwd='xyz@gmail.com','xyz@123'
 max_attempt=5

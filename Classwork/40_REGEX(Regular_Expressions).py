@@ -59,13 +59,13 @@ def validate_name(name):
     print(exit() if validate_name(input("Enter name: ")) else "Wrong Input")'''
 
 def validate_email(email):
-    pattern=r'^[a-z0-9._]+@[a-z.-]+\.[a-z]{2,3}$'
+    pattern=r'^[A-Za-z0-9]+@[a-z.-]+\.[a-z]{2,3}$'
     return bool(re.fullmatch(pattern,email))
 '''while True:
     print(exit() if validate_email(input("Enter email: ")) else "Wrong Input")'''
 
 def validate_phone_number(number):
-    pattern=r'^(?:\+91|0)?[6-9]\d{10}$'
+    pattern=r'^(?:\+91|0)?[6-9]\d{9}$'
     return bool(re.fullmatch(pattern,number))
 '''while True:
-    print(exit() if validate_phone_number(int(input("Enter phone number: "))) else "Wrong Input")'''
+    print(exit() if validate_phone_number(input("Enter phone number: ")) else "Wrong Input")'''
