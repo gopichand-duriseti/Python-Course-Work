@@ -6,7 +6,9 @@ class Art:
         self.n=n
     def __add__(self,other):
         return Art(self.n + other.n)
+    def __str__(self):
+        return f'Addition: {self.n}'
 c=Art(5)
-c1=Art(10)
-c2=Art(20)
+c1=Art(20)
+c2=Art(80)
 print(c + c1 + c2)
